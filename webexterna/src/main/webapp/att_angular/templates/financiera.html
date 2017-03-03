@@ -1,0 +1,145 @@
+<div class="panel-heading-info" role="tab" id="heading-financiera" ng-class="{'panel-completed' : demograficos }">
+  <h4 class="panel-title">
+    <a id="link-financiera" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-financiera" aria-expanded="false" aria-controls="collapse-financiera">
+      Información Financiera
+    </a>
+  </h4>
+</div>
+<div id="collapse-financiera" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-financiera">
+  <div class="panel-body">
+    <div class="panel-body-info">
+      <div class="row">
+        <div class="panel panel-info">
+          <div class="panel-body-inner">
+            <div class="row">
+              <div class="form-group col-lg-12">
+                <label class="control-label">1.¿Es usted
+                  titular de alguna TDC vigente emitida por alguna
+                  Institución Bancaria o Comercial?</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-4" >
+                <label class="control-label">Respuesta</label> <select
+                  id="Select1Preg1Buro" class="form-control" ng-model="respUnoVal" >
+                  <option value="Nada"></option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-group show col-lg-4" id="DivSelect2Preg1" ng-show="respUnoVal == 'Si'">
+                <label>Banco</label> <select id="Select2Preg1Buro"
+                class="form-control">
+                <option value="Nada"></option>
+                <option value="Atentobank">Atento Bank</option>
+                <option value="Bancomer">Bancomer</option>
+                <option value="BANAMEX">BANAMEX</option>
+                <option value="SANTANDER SERFIN">SANTANDER
+                  SERFIN</option>
+                  <option value="BANORTE">BANORTE</option>
+                  <option value="BANCO INBURSA">BANCO INBURSA</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group show col-lg-4" id="DivTextPreg1" ng-show="respUnoVal == 'Si'">
+                <label class="control-label">Número de crédito</label>
+                <input type="text" class="form-control" id="TextPreg1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body-info">
+      <div class="row">
+        <div class="panel panel-info">
+          <div class="panel-body-inner">
+            <div class="row">
+              <div class="form-group col-lg-12">
+                <label class="control-label"
+                  style="text-align: justify;">2.¿Tiene un
+                  crédito Hipotecario vigente con alguna institución
+                  financiera?</label><br>
+              </div>
+
+              <div class="form-group col-lg-4" id="DivSelect1Preg2">
+                <label class="control-label">Respuesta</label>
+                <select id="Select1Preg2Buro" class="form-control" ng-model="respDosVal">
+                  <option value="Nada"></option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-group show col-lg-4" id="DivSelect2Preg2" ng-show="respDosVal == 'Si'">
+                <label>Banco</label> <select id="Select2Preg2Buro"
+                class="form-control">
+                <option value="Nada"></option>
+                <option value="Atentobank">Atento Bank</option>
+                <option value="Bancomer">Bancomer</option>
+                <option value="BANAMEX">BANAMEX</option>
+                <option value="SANTANDER SERFIN">SANTANDER
+                  SERFIN</option>
+                  <option value="BANORTE">BANORTE</option>
+                  <option value="BANCO INBURSA">BANCO INBURSA</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group show col-lg-4" id="DivTextPreg2" ng-show="respDosVal == 'Si'">
+                <label class="control-label">Número de crédito</label>
+                <input type="text" class="form-control" id="TextPreg1" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body-info">
+      <div class="row">
+        <div class="panel panel-info">
+          <div class="panel-body-inner">
+            <div class="row">
+              <div class="form-group col-lg-12">
+                <label class="control-label"
+                style="text-align: justify;">3.¿Tiene un
+                crédito Automotriz con antiguedad menor de 2 años?</label><br>
+              </div>
+              <div class="form-group col-lg-4" id="DivSelect1Preg3">
+                <label class="control-label">Respuesta</label> <select
+                id="Select1Preg3Buro" class="form-control" ng-model="respTresVal">
+                <option value="Nada"></option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="form-group show col-lg-4" id="DivSelect2Preg3" ng-show="respTresVal == 'Si'">
+              <label>Banco</label> <select class="form-control">
+                <option value="Nada"></option>
+                <option value="AtentoBank">Atento Bank</option>
+                <option value="Bancomer">Bancomer</option>
+                <option value="BANAMEX">BANAMEX</option>
+                <option value="SANTANDER SERFIN">SANTANDER
+                  SERFIN</option>
+                  <option value="BANORTE">BANORTE</option>
+                  <option value="BANCO INBURSA">BANCO INBURSA</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group show col-lg-4" id="DivTextPreg3" ng-show="respTresVal == 'Si'">
+                <label class="control-label">Número de crédito</label>
+                <input type="text" class="form-control" id="TextPreg1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 checkbox" >
+          <input type="checkbox" icheck id="CheckConsulta" ng-model="$parent.consultaBuro" ng-change="$parent.changeConsulta()" />&nbspHoy siendo&nbsp<output style="color:black;" id="fecha"></output> ¿Autoriza a Grupo financiero Atento México  a consultar sus antecedentes crediticios por única ocasión ante las Sociedades de información Crediticia que estime conveniente, declarado que conoce la naturaleza, alcance y uso que se hará de tal información?
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

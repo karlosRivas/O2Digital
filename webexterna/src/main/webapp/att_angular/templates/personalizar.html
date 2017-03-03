@@ -1,0 +1,123 @@
+
+  <div class="panel-heading-info" role="tab" id="heading-personalizar" ng-class="{'panel-completed' : aviso }">
+    <h4 class="panel-title">
+      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-personalizar" aria-expanded="true" aria-controls="collapse-personalizar">
+        Personalice su iPhone
+      </a>
+    </h4>
+  </div>
+  <div id="collapse-personalizar" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-personalizar">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3" ng-repeat="item in items track by item.id">
+          <label class="img-check" ng-attr-for="{{ 'item-' + item.id }}" >
+            <img ng-src="{{item.img}}" alt="..." class="img-thumbnail img-responsive" >
+            <input type="radio" name="item" ng-attr-id="{{ 'item-' + item.id }}" ng-value="item" class="hidden" ng-model="vm.equipo" autocomplete="off">
+            <span class="item-desc">
+              {{item.description}}
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-12">
+          <div class="panel panel-info col-lg-12 col-xs-12 col-sm-12 col-md-12">
+            <label class="control-label">Elige tu paquete de beneficios mensuales.</label>
+            <div id="tabla" >
+              <table class="table table-hover col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <thead >
+                  <tr  style="color:white; background-color: #003d92;">
+                    <!--<th >Selecci&oacute;n</th>-->
+                    <th class="col-lg-4 col-md-4">Beneficios mensuales</th>
+                    <th class="col-lg-2 col-md-2 text-center" ng-repeat="package in packages track by package.id">
+                      <label class="">{{package.name}}</label><br> <input type="radio"  name="chk-package" ng-value="package" ng-model="vm.paquete" />
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td class="col-xs-2">
+                      Precio Mensual de paquete<br>(Add on Control)<sup>(5)</sup>
+                    </td>
+                    <td class="text-center">{{packages[0].price}}<sub class="decimal-big">.00</sub></td>
+                    <td class="text-center">{{packages[1].price}}<sub class="decimal-big">.00</sub></td>
+                    <td class="text-center">{{packages[2].price}}<sub class="decimal-big">.00</sub></td>
+                    <td class="text-center">{{packages[3].price}}<sub class="decimal-big">.00</sub></td>
+                  </tr>
+                  <tr>
+                    <td class="">Minutos y/o SMS todo destino<br>(México, Estados Unidos y Canadá)<sup>(1)</sup></td>
+                    <td class="text-center high-font" colspan="4">Ilimitado<sup>(1)</sup></td>
+                  </tr>
+                  <tr>
+                    <td class="">Internet<sup>(2)</sup></td>
+                    <td class="text-center">{{packages[0].internet}}</td>
+                    <td class="text-center">{{packages[1].internet}}</td>
+                    <td class="text-center">{{packages[2].internet}}</td>
+                    <td class="text-center">{{packages[3].internet}}</td>
+                  </tr>
+                  <tr>
+                    <td class="">+Internet de promoci&oacute;n<sup>(2)</sup></td>
+                    <td class="text-center">{{packages[0].promoInternet}}</td>
+                    <td class="text-center">{{packages[1].promoInternet}}</td>
+                    <td class="text-center">{{packages[2].promoInternet}}</td>
+                    <td class="text-center">{{packages[3].promoInternet}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="">Internet Total</td>
+                    <td class="text-center">{{packages[0].promoInternet}}</td>
+                    <td class="text-center">{{packages[1].promoInternet}}</td>
+                    <td class="text-center">{{packages[2].promoInternet}}</td>
+                    <td class="text-center">{{packages[3].promoInternet}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="">Redes sociales ilimitadas<sup>(3)</sup><br>(Facebook, Facebook Messenger, Twitter, Whatsapp)</td>
+                    <td class="text-center high-font" colspan="4">Incluido</td>
+                  </tr>
+
+                  <tr>
+                    <td class="">Radio Prip<sup>®</sup><sup>(4)</sup></td>
+                    <td class="text-center high-font" colspan="4">Incluido</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="panel panel-info col-lg-12 col-xs-12 col-sm-12 col-md-12">
+            <label class="control-label">Elige los meses de servicio incluido.</label>
+            <div class="row">
+                <div class="form-group col-lg-2 col-xs-2 col-sm-2 col-md-2 col-md-offset-3">
+                  <label class="radio-inline ">
+                    <input type="radio" name="chk-periodo" id="inlineRadio12" value="12 meses" ng-model="vm.periodo"> 12 meses
+                  </label>
+                </div>
+
+                <div class="form-group col-lg-2 col-xs-2 col-sm-2 col-md-2">
+                  <label class="radio-inline ">
+                    <input type="radio" name="chk-periodo" id="inlineRadio18" value="18 meses" ng-model="vm.periodo"> 18 meses
+                  </label>
+                </div>
+
+                <div class="form-group col-lg-2 col-xs-2 col-sm-2 col-md-2">
+                  <label class="radio-inline ">
+                    <input type="radio" name="chk-periodo" id="inlineRadio24" value="24 meses" ng-model="vm.periodo"> 24 meses
+                  </label>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row show text-center" ng-show="showButtonContinue()">
+        <div class="col-lg-12">
+          <button class="btn btn-primary" id="BtnContinuar" ng-click="showAviso()">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>

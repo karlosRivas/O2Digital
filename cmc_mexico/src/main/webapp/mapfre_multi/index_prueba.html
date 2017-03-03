@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"> 
+    <title>Mapfre</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+     <meta http-equiv="Content-type" content="text/html" charset="UTF-8"/>﻿
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
+    <!-- This is the latest version of angular (at the time this template was created) -->
+
+    <!-- Bootstrap --> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css"> 
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css"/> 
+    
+   
+    <!-- Librerias -->
+
+    <script src="js/jquery/jquery-1.12.0.min.js"></script>
+    
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+     
+    <!-- Librerias para los checkox y radios-->
+    <link href="css/skins/all.css" rel="stylesheet">
+    <script src="js/icheck.min.js"></script>
+    <style type="text/css">
+      #navegacion{
+        top:0px;
+        position: absolute;
+        z-index: -10000;
+      }
+
+      #basicos{
+        z-index: -10000;
+        position: absolute;
+        top:102px;
+        left: 436px;
+      }
+      #seguros{
+        z-index: 100000;
+        position: absolute;
+        top:12em;
+        left:30em ;
+      }
+
+       #seguros2{
+        z-index: 100000;
+        position: absolute;
+        top:12em;
+        left:30em ;
+      }
+
+      #linkSeguros{
+        color: #d81e05;
+        z-index: 100000000;
+        position: absolute;
+        top:14em;
+        left:32em ;
+      }
+
+      p:hover{
+        color:black; 
+      }
+    </style>
+<script type="text/javascript">
+
+$( document ).ready(function() {
+    $("#seguros").hide();
+  
+
+
+    /*$( "#basicos" ).hover(
+      function() {
+        $("#seguros").show("slow");
+        $("#link").show("slow");
+       
+      }
+    );*/
+
+$("#seguros").mouseenter(function(){
+   $("#linkSeguro").show("slow");
+    });
+
+
+$("#basicos").mouseleave(function(){
+   $("#showSeguros").hide("slow");
+    });
+
+
+});
+
+
+
+
+
+  
+</script>
+
+<style type="text/css">
+  .showSeguros{ 
+display: none;
+}
+.basicos:hover .showSeguros{
+ display : block;
+
+}
+</style>
+</head>
+<body ng-app="formlyApp" ng-controller="MainController as vm">
+
+ <img id="navegacion" src="Images/navegacion2.png" style=" margin-top:0px;">
+<!-- <img id="basicos" src="Images/basicos.png">-->
+
+
+<!--<div id="seguros">
+  <img  src="Images/seguros.png">
+  <p id="link">Seguros</p>  
+ </div>
+ <div id="seguros2">
+  <img src="Images/seguros.png"> 
+  <p id="link">Seguros</p>
+ </div>-->
+
+
+ <div class="basicos" style="width: 3em;">
+  <img  src="Images/basicos.png">
+   <div class="showSeguros">
+    <img id="typeSeguro" src="Images/seguros.png">
+    <p id="linkSeguro">Seguros</p>  
+   </div>
+ </div>
+
+ <!--<div class="container">
+  <div class="row">
+   <div class="col-lg-12">
+    <div class="panel panel-default" >
+     <div class="panel-body">
+
+     
+
+     </div>
+    </div>
+   </div>
+  </div>
+ </div> -->
+ 
+</body>
+</html>

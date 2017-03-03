@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"> 
+    <title>Mapfre</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />-->
+     <meta http-equiv="Content-type" content="text/html" charset="UTF-8"/>﻿
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
+<!-- This is the latest version of angular (at the time this template was created) -->
+    <script src="js/angular.js"></script>
+
+  <!-- Bootstrap --> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css"> 
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="css/estilos.css"/> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css"/>
+  <!-- Librerias -->
+
+  <script src="js/jquery/jquery-1.12.0.min.js"></script>
+  <script src="js/angular/angular.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" src="js/funciones.js"> </script>
+  <script type="text/javascript" src="js/preview.js"> </script>
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/bootstrap-slider.js"></script>
+  
+  <!-- Librerias para los checkox y radios-->
+  <link href="css/skins/all.css" rel="stylesheet">
+  <script src="js/icheck.min.js"></script>
+  <script src="js/custom.min.js"></script>
+  <!-- Api google maps-->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Twitter bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- apiCheck is used by formly to validate its api -->
+    <script src="js/api-check.js"></script>
+    <!-- This is the latest version of angular (at the time this template was created) -->
+    <script src="js/angular.js"></script>
+
+    <!-- This is the current state of master for formly core. -->
+    <script src="js/formly.js"></script>
+    <!-- This is the current state of master for the bootstrap templates -->
+    <script src="js/angular-formly-templates-bootstrap.js"></script>
+
+    <script type="text/javascript" src="js/sha256.js"></script>
+    <script type="text/javascript" src="js/enc-base64-min.js"></script>
+    <style>
+    /*#navegacion{
+        top:0px;
+        position: absolute;
+        display: inline-block;
+      
+      }*/
+
+        #mydiv {  
+    position:absolute;
+    top:15em;
+    left: 35em;
+    width: 12em;
+   border-radius: 10px; 
+    z-index:10000;
+   /*background-color:red;*/
+   /* opacity: .8;*/
+ }
+
+/*.bodystyle{
+  background-color: aqua;
+}*/
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
+
+#mydiv img{
+   width: 100%;
+   background-color:rgba(255, 255, 255,0.8);
+    border-radius:33px;
+}
+.iframepos{
+    position: absolute;
+    top:3em;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color: white;
+    allowtransparency: false;
+    /*background-image: Images/cargando.gif;*/
+    /*opacity: .9;*/
+    /*margin-left: -100px; /* -1 * image width / 2 */
+    margin-top:  -46px;  /* -1 * image height / 2 */
+    /*display: block; */    
+    border-radius: 10px;
+}
+
+.bodyPage{
+  position: absolute;
+  top:130em;
+  left: 6em;
+}
+
+#images{
+  position: relative;
+}
+#navegacion{
+ z-index: -10000;
+}
+#help{
+  z-index: 10000;
+position: absolute;
+  top:5.2em;
+  right: 5.7em;
+  float: right;
+}
+  </style>
+  <script type="text/javascript">
+     $( document ).ready(function() {
+        console.log( "ready!" );
+        $("#help").click(function(){
+          window.location.href = 'help.html';
+        });
+     });
+
+
+    </script>
+
+</head>
+<body ng-app="formlyApp" ng-controller="MainController as vm" class="body">
+  
+ 
+
+
+ <div class="spinner" ng-show="loading"></div>
+  
+    <!--Imagen cargando-->
+    
+    <div class="container">
+     <div  class="col-lg-12" id="mydiv" ng-show="loading">
+        <center>
+         <img class="img-responsive col-lg-3" style="display: absolute;" src="Images/cargando.gif" class="ajax-loader"/>
+        </center>
+     </div>
+    </div>
+
+ 
+
+
+
+
+<div class="container-fluid" style="margin-top: -1.4em;">
+    <div class="panel-default">
+     <div class="panel-body1" >
+       <div>
+
+        <a href="help.html"><img class="img-responsive img-fluid" src="Images/navegacion4.png"/></a>
+        <!--<a href="help.html"><label>¿Necesitas Ayuda?</label></a>-->
+        <!--<a href="help.html"><span class ="label label-primary">Primary Label</span></a>-->
+       </div>
+     </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-lg-12">
+
+    <div class="panel panel-default" >
+     <div class="panel-body">
+      <form name="myform" novalidate>
+
+                    
+ 
+
+
+        <div id="iframeO2div" ng-show="ready" class="animate-show iframepos">
+         <iframe id="iframeO2" ng-src="{{detailFrame}}" align="middle" width="100%" height="800em" frameborder="0">
+         <p>Your browser does not support iframes.</p>
+         </iframe>
+        </div>
+
+
+        
+        
+           <div id="DivHeadAviso" ><a id="LinkAviso">Aviso de privacidad</a></div>   
+            <div id="CuerpoAviso" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+             <div class="panel-body">
+                <button id="BtnAviso" style="margin-bottom: 1em;" class="btn btn-danger " data-toggle="modal" data-target="#myModal">Leer Aviso</button>
+             </div>      
+            </div>
+            
+
+        <div id="DivInfoPersonal"> 
+         <div id="DivHeadInfoPersonal" ><a id="LinkInfoPersonal">Información Personal</a></div>
+          <div id="CuerpoInfoPersonal" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body" >
+            
+            <div class="form-group">
+           
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="nombre">Nombre(s)*</label>
+               <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre(s)" ng-model="vm.datos.name"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="apellidos">Apellidos*</label>
+               <input class="form-control" id="apellidos" name="apellidos" type="text" placeholder="Apellidos" ng-model="vm.datos.lastname"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="rfc">RFC*</label>
+                  <input class="form-control" id="rfc" name="rfc" type="text" placeholder="RFC"/>
+                  
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="nacimiento">Fecha de Nacimiento*</label>
+                  <input class="form-control" id="nacimiento" name="nacimiento" type="date"  placeholder="Nacimiento"/>
+                  
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="nacionalidad">Nacionalidad*</label>
+                  <input class="form-control" id="nacionalidad" name="nacionalidad" type="text" ng-model="user.nacionalidad" placeholder="Nacionalidad"/>
+                  
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="ine">INE*</label>
+               <input class="form-control" id="ine" name="ine" type="text" placeholder="INE" ng-model="vm.datos.nif"/>
+             </div>  
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="email">Email*</label>
+               <input class="form-control" id="email" name="email" type="text" placeholder="Email" ng-model="vm.datos.email"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="cel">Celular*</label>
+               <input class="form-control" id="cel" name="cel" type="text" placeholder="cel" ng-model="vm.datos.cellphone"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="GuardarInfoPersonal"></label>
+                  <center><button style="margin-bottom:1em; margin-top: 6px;" class="btn btn-danger btn-md" id="GuardarInfoPersonal" >Guardar</button></center>
+             </div>
+            </div>
+           </div>      
+          </div>
+        </div>
+          
+
+
+
+        <div class="DivInfoDemografica" style="margin-top:1em; ">
+         <div id="DivHeadInfoDemografica" ><a id="LinkInfoDemografica">Datos Demográficos</a></div>
+          <div id="CuerpoInfoDemografica" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body">
+            <div class="form-group">
+                 
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Sexo">Sexo</label>
+                  <select class="form-control" id="Sexo" name="sexo" >
+                      <option>Masculino</option>
+                      <option>Femenino</option>
+                  </select>
+                </div> 
+                 
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Estado">Estado Civil</label>
+                  <select class="form-control" id="Estado" name="Estado" >
+                        <option>Soltero(a)</option>
+                        <option>Casado(a)</option>
+                        <option>Unión libre</option>
+                        <option>Separada(a)</option>
+                        <option>Divorciado(a)</option>
+                        <option>Viudo(a)</option>
+                        <option>Otro</option>
+                  </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="Dependencia">Dependencia Economica</label>
+                   <input class="form-control" id="Dependencia" type="text" placeholder= "No. Dependencia">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Vivienda">Tipo de Vivienda</label>
+                  <select class="form-control" id="Vivienda" name="Vivienda"  placeholder="Vivienda">
+                        <option>Propia</option>
+                        <option>Arrendada</option>
+                        <option>Otro</option>
+                  </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="AntiguedadDom">Antiguedad de domicilio:</label>
+                   <input class="form-control" id="AntiguedadDom" type="text" placeholder="Años">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="cp">CP</label>
+                  <input class="form-control" id="cp" type="text" placeholder="CP">
+                </div>
+
+                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="colonia">Colonia</label>
+                   <input class="form-control" id="colonia" type="text" placeholder="Colonia">
+                 </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="mundel">Mucipio / Delegación</label>
+                   <input class="form-control" id="mundel" type="text" placeholder="Municipio / Delegación">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                    <label for="mundel">Entidad Federativa</label>
+                    <select class="form-control" id="entidad" name="entidad" >
+                        <option value="0">Todo México</option>
+                        <option value="1">Aguascalientes</option>
+                        <option value="2">Baja California</option>
+                        <option value="3">Baja California Sur</option>
+                        <option value="4">Campeche</option>
+                        <option value="5">Coahuila de Zaragoza</option>
+                        <option value="6">Colima</option>
+                        <option value="7">Chiapas</option>
+                        <option value="8">Chihuahua</option>
+                        <option value="9">CDMX</option>
+                        <option value="10">Durango</option>
+                        <option value="11">Guanajuato</option>
+                        <option value="12">Guerrero</option>
+                        <option value="13">Hidalgo</option>
+                        <option value="14">Jalisco</option>
+                        <option value="15">México</option>
+                        <option value="16">Michoacán </option>
+                        <option value="17">Morelos</option>
+                        <option value="18">Nayarit</option>
+                        <option value="19">Nuevo León</option>
+                        <option value="20">Oaxaca</option>
+                        <option value="21">Puebla</option>
+                        <option value="22">Querétaro</option>
+                        <option value="23">Quintana Roo</option>
+                        <option value="24">San Luis Potosí</option>
+                        <option value="25">Sinaloa</option>
+                        <option value="26">Sonora</option>
+                        <option value="27">Tabasco</option>
+                        <option value="28">Tamaulipas</option>
+                        <option value="29">Tlaxcala</option>
+                        <option value="30">Veracruz </option>
+                        <option value="31">Yucatán</option>
+                        <option value="32">Zacatecas</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="calle">Calle</label>
+                   <input class="form-control" id="calle" type="text" placeholder="Calle">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="numext">Número exterior</label>
+                  <input class="form-control" id="numext" type="text" placeholder="Número Ext.">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="numint">Número interior</label>
+                   <input class="form-control" id="numint" type="text" placeholder="Número int.">
+                </div>
+                
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="GuardarInfoDemografica"></label>
+                  <center><button style="margin-bottom:1em; margin-top: 6px;" class="btn btn-danger btn-md" id="GuardarInfoDemografica" >Guardar</button></center>
+                </div>
+
+            </div>
+           </div>
+          </div>
+        </div>
+
+        <div id="DivInfOcupacion"> 
+         <div id="DivHeadInfOcupacion" ><a id="LinkInfOcupacion">Datos Ocupación</a></div>
+          <div id="CuerpoInfOcupacion" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body"> 
+            <div class="form-group">
+
+               <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Ocupacion">Ocupación</label>
+                  <select class="form-control" id="Ocupacion" name="=cupacion" >
+                        <option>ASALARIADO(A)</option>
+                        <option>ESTUDIANTE</option>
+                        <option>AMA DE CASA</option>
+                        <option>OTRO</option>
+                  </select>
+               </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                    <label for="Estudios">Nivel de estudios</label>
+                    <select class="form-control" id="Estudios" name="Estudios" >
+                        <option>Primaria</option>
+                        <option>Secundaria</option>
+                        <option>Bachillerato</option>
+                        <option>Licenciatura</option>
+                        <option>Maestría</option>
+                        <option>Doctorado</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Actividad">Actividad Espeficifica</label>
+                  <input class="form-control" id="Actividad" type="text" placeholder="Actividad">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Ingreso">Ingreso neto mensual</label>
+                  <input class="form-control" id="Ingreso" type="text" placeholder="Ingreso mensual">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="NomEmpresa">Nombre de empresa</label>
+                  <input class="form-control" id="NomEmpresa" type="text" placeholder="Empresa">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="IniAct">Inicio de labores </label>
+                  <input class="form-control" id="IniAct" type="date">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="TimeEmpleo">Antiguedad de empleo </label>
+                  <input class="form-control" id="TimeEmpleo" type="text">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Puesto">Puesto</label>
+                  <input class="form-control" id="Puesto" type="text" placeholder="Puesto">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="TipoContrato">Tipo de contrato</label>
+                  <select class="form-control" id="TipoContrato" name="TipoContrato" >
+                        <option>Indefinido</option>
+                        <option>Temporal</option>
+                        <option>En Practicas</option>
+                        <option>Otro</option>
+                       </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="TipoEmpresa">Tipo de Empresa</label>
+                  <select class="form-control" id="TipoEmpresa" name="TipoEmpresa" >
+                        <option>Extractiva</option>
+                        <option>Industrial</option>
+                        <option>Comercial</option>
+                        <option>De Servicios</option>
+                        <option>Financiera</option>
+                        <option>Contrucción</option>
+                        <option>Otro</option>
+                      </select>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="GuardarInfOcupacion"></label>
+                  <center><button style="margin-bottom:1em; margin-top: 6px;" class="btn btn-danger btn-md" id="GuardarInfOcupacion" >Guardar</button></center>
+                </div>
+            </div>
+           </div>      
+          </div>
+        </div>
+
+    
+        
+        <!--<button id="BtnFinalizar" data-toggle="modal" data-target="#myModalFinalizar" class="btn btn-success" ng-click="">Continuar</button> -->
+      
+        
+        <center>
+        <button  id="BtnFirmarSucursal" style="margin:1em;" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#ModalSucursal">Sucursal </button>
+
+        <button id="BtnCrearOperacion" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#modalEnLinea">En linea</button>
+        </center>
+
+
+        <!--<button ng-click="vm.Prueba()" type="submit" class="btn btn-primary" >Comenzar identificación</button>-->
+
+        <!--MODALES-->
+
+         <!-- Modal empezar video-->
+          <div class="modal fade" id="modalEnLinea" role="dialog">
+           <div class="modal-dialog modal-md">
+            <div class="modal-content">
+             <div class="modal-header">
+             <center><img  src="Images/logo2.png">
+              <h4 class="modal-title"><b>Verifica que los datos sean correctos</b></h4>
+             </center>
+             </div>
+             <div class="modal-body">
+              <formly-form model="vm.datos" fields="vm.datosFields" form="vm.datosForm" ng-show="!ready">
+               <!--<button type="submit" class="btn btn-primary" ng-disabled="vm.datosForm.$invalid" ng-show="!ready" >Comenzar identificación</button>-->       
+              </formly-form>
+              
+             </div>
+             <div class="modal-footer">
+              <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+              <center>
+                <button type="submit" class="btn btn-danger" ng-click="vm.onSubmit()" ng-disabled="vm.datosForm.$invalid" data-dismiss="modal" ng-show="!ready" >Comenzar identificación</button>
+                <!--<button ng-click="vm.Prueba()" type="submit" class="btn btn-primary" >Comenzar identificación</button>-->
+              </center>
+             </div>
+            </div>  
+           </div>
+          </div>
+
+
+
+
+         <!--Modal Cargando-->
+         <div class="container">
+          <div class="modal fade" id="Searching_Modal"  role="dialog" tabindex="-1" aria-labelledby="mySmallModalLabel">
+           <div class="modal-dialog modal-sm" >
+            <div class="col-xs-2"></div>
+             <div  class="modal-content col-xs-8" style="background-color: rgba(255, 255, 255,0.8); border-radius:33px;">
+              <div class="modal-body">
+               <center><img style="width:100%;" src="Images/cargando.gif"></center>                               
+              </div>
+             </div>
+           </div>
+          </div>
+         </div>
+
+        <!--Modal Pop-up cotizacion por correo electronico-->     
+                <div class="modal fade" id="myModalCotizacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                   <div class="modal-header">
+                    <center><img  src="Images/logo2.png">
+                    <h4 class="modal-title"><b>Enviar cotización por Email</b></h4></center>
+                   </div>
+                   <div class="modal-body">
+                    <form class="form-horizontal">
+
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" style="float: left;" for="CotizacionNombre">*Nombre(s)</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="vm.datos.name" class="form-control" id="CotizacionNombre" placeholder="Nombre"/>
+                          </div>
+                      </div>
+                      
+                         <div class="form-group">
+                          <label class="control-label col-sm-2" style="float: left;" for="CotizacionLastname">*Lastname</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="vm.datos.lastname" class="form-control" id="CotizacionLastname" placeholder="Apellidos"/>
+                          </div>
+                      </div>
+                         
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" style="float: left;" for="CotizacionCel">*Celular</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="vm.datos.cellphone" class="form-control" id="CotizacionCel" placeholder="Celular"/>
+                          </div>
+                      </div>
+
+
+                      <div class="form-group">
+                         <label class="control-label col-sm-2" style="float: left;" for="CotizacionEmail">*Email</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-model="vm.datos.email" id="CotizacionEmail" placeholder="Email"/>
+                          </div>
+                        </div>
+                        &nbsp
+                    </form>
+                   </div>
+                   <div class="modal-footer">
+                     <center>
+                     <button type="button" class="btn btn-danger" data-dismiss="modal" id="BtnCotizacionAceptar">Enviar</button>
+                     </center>
+                   </div>
+                  </div>
+                 </div>
+                </div>      
+        <!--Modal Leer Aviso-->
+        <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog modal-md ">
+                     <div class="modal-content">
+                     <div id="HeaderModal" class="modal-header">
+                               <center><img src="Images/logo2.png"/>
+                               <h4 class="modal-title">Aviso de privacidad Mapfre</h4></center>
+                     </div>
+                      <div class="modal-body">
+                         <p id="ParrafoAviso">Mapfre México hace de su conocimiento que sus datos personales serán protegidos de acuerdo a lo establecido por la ley Federal de Protección de datos Personales en Posesión de los particulares. Usted podrá consultar nuestro aviso de privacidad completo en la página <a href="www.mapfre.com.mx">www.mapfre.com.mx</a></p>
+                      </div>
+                      <div class="modal-footer">
+                        <button id="BtnAceptarAviso" type="button" class="btn btn-danger" data-dismiss="modal">Marcar como leído</button>
+                      </div>
+                     </div>
+                  </div>
+        </div><!--Termina el modal-->
+
+        <!--Modal Pop-up de Buro-->
+                <div class="modal fade" id="myModalBuro" >
+                     <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                       <div id="HeaderModal" class="modal-header">
+                        <center><img src="Images/logo2.png"/></center>
+                        <!--<h4 class="modal-title">¡Enhorabuena!<br> tu crédito ha sido pre-aprobado</h4>-->
+                        <h4>El crédito final que podemos otorgarte es de:&nbsp<b><output id="CreditoFinal" style="color:black;display: inline;"></output></b></h4>
+                       </div>
+                       <div class="modal-body">
+                        <!--<center><img id="ImgCheck" src="Images/check.gif">
+                        <label >Da click en aceptar para continuar con el proceso</label>
+                        </center>-->
+              
+                        <table class=" table table-hover  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                         <thead >
+                           <tr style="color:white; background-color: #ee3424;">
+                              <!--<th >Selección</th>-->
+                              <th class="col-xs-6">Plazo</th>
+                              <!--<th class="col-xs-5">Ingreso minimo</th>-->
+                              <th class="col-xs-6">Pago mensual</th>
+                           </tr>
+                         </thead>
+                         <tbody>
+                           <tr>
+                              <td  class="col-xs-6"> 
+                                <input type="radio" value="24meses"  id="CheckBoxMesesFinal" name="CheckBoxMesesFinal"/><output style="display: inline;">24 meses</output>
+                              </td>
+                              <!--<td class="col-xs-5" ><output id="IngresoMinimoFinal24" ></output></td>-->
+                              <td class="col-xs-6"><output id="PagoMensualFinal24"></output></td>
+                           </tr>
+                           
+                           <tr>
+                              <td class="col-xs-2">
+                              <input type="radio" id="CheckBoxMesesFinal" name="CheckBoxMesesFinal" value="36meses" /><output style="display: inline;">36 meses</output>
+                              </td>
+                              <!--<td>36 Meses</td>-->
+                              <!--<td class="col-xs-5"><output id="IngresoMinimoFinal36"></output></td>-->
+                              <td class="col-xs-6"><output id="PagoMensualFinal36"></output></td>
+                           </tr>
+
+                           <tr>
+                              <td class="col-xs-6">
+                              <input type="radio" id="CheckBoxMesesFinal" name="CheckBoxMesesFinal" value="48meses" /><output style="display: inline;">48 meses</output>
+                              </td>
+                              <!--<td>48 Meses</td>-->
+                              <!--<td class="col-xs-5"><output id="IngresoMinimoFinal48"></output></td>-->
+                              <td class="col-xs-6"><output id="PagoMensualFinal48"></output></td>
+                           </tr>
+                       </tbody>
+                        </table>
+                       </div>
+                      <div class="modal-footer">
+                        <button style="float: left;" type="button" class="btn btn-danger" data-dismiss="modal" id="BtnNuevaSimulacion">Nueva simulación</button>
+                        <button style="float: right;" type="button" class="btn btn-danger" data-dismiss="modal" id="BtnAceptarBuro">Aceptar</button>
+
+                      </div>
+                      </div>
+                     </div>
+                </div>
+
+        <!--Modal Pop-up Finalizar-->
+                <div class="modal fade" id="myModalFinalizar" role="dialog">
+                     <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                       <div id="HeaderModal" class="modal-header">
+                        <center><img src="Images/logo2.png"></center>
+                        <!--<h4 class="modal-title">Las condiciones crediticias pueden diferir de las solicitadas</h4>-->
+                       </div>
+                       <div class="modal-body">
+                        <center><img id="ImgCheck" style="width: 35%;" src="Images/cotizacion.gif">
+                        <label class="">¡Enhorabuena! tu crédito ha sido preaprobado. A continuación recibirás un email con las condiciones. Puedes concluir con el proceso bajo las siguientes modalidades: </label></center>
+                       </div>
+                      <div class="modal-footer">
+
+                        <center>
+                        <button  id="BtnFirmarSucursal" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#ModalSucursal">Sucursal </button>
+
+                        <button id="BtnCrearOperacion" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#myModalOperacion" >En linea</button></center>
+                      </div><!--Termina el modal-->
+                      </div>
+                     </div>
+                </div>
+
+         <!--Modal Pop-up Buscar sucursal-->
+                <div class="modal fade" id="ModalSucursal" >
+                  <div class="modal-dialog modal-lg ">
+                     <div class="modal-content">
+                     <div id="HeaderModal" class="modal-header">
+                               <center><img src="Images/logo2.png"/></center>
+                               <!--<h4 class="modal-title">Firmar en Sucursal</h4>-->
+                     </div>
+                      <div class="modal-body" style="margin-top:-20px; ">
+                      <h4>Presentar la siguiente documentación:</h4>      
+                          <ol>
+                              <li>Solicitud de seguro</li>
+                              <li>Comprobante de ingresos</li>
+                              <li>Comprobante de domicilio</li>
+                              <li>Identificación oficial </li>
+                          </ol>        
+                       <!-- <div id="map-canvas"></div>-->
+                       
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15050.735280432453!2d-99.16222135287066!3d19.42606253041355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smapfre!5e0!3m2!1ses-419!2smx!4v1485456800009" width="100%" height="250em"  frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button id="BtnAceptarMapa" type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+                      </div>
+                     </div>
+                  </div>
+                </div>
+
+ 
+
+      </form>  
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+</body>
+
+    <!-- Application Dependencies -->
+
+    <!-- Application Scripts -->
+    <script src="app.js"></script>
+    <script src="scripts/MainController.js" charset="utf-8"></script>
+    <script src="scripts/province.js" charset="utf-8"></script>
+</html>

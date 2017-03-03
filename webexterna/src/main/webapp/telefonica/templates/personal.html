@@ -1,0 +1,83 @@
+<div class="panel-heading-info" role="tab" id="heading-personal" ng-class="{'panel-completed' : financiera }">
+  <h4 class="panel-title">
+    <a id="link-personal" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-personal" aria-expanded="false" aria-controls="collapse-personal">
+      Información Personal
+    </a>
+  </h4>
+</div>
+<div id="collapse-personal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-personal">
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+          <label for="nombre">Nombre(s)<span class="error">*</span></label> <input
+          class="form-control" id="nombre" name="nombre" type="text" required
+          placeholder="Nombre(s)" ng-model="vm.datos.name" />
+          <span ng-show="myform.nombre.$touched">
+            <span class="error" ng-show="myform.nombre.$error.required">* campo obligatorio</span>
+          </span>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="apellidos">Apellido(s)<span class="error">*</span></label> <input
+        class="form-control" id="apellidos" name="apellidos" required
+        type="text" placeholder="Apellidos"
+        ng-model="vm.datos.lastname" />
+        <span ng-show="myform.apellidos.$touched">
+          <span class="error" ng-show="myform.apellidos.$error.required">* campo obligatorio</span>
+        </span>
+      </div>
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="rfc">RFC</label> <input class="form-control"
+        id="rfc" name="rfc" type="text" placeholder="RFC" />
+        <!-- <label ></label> -->
+      </div>
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="nacimiento">Fecha de Nacimiento</label> <input
+        class="form-control" id="nacimiento" name="nacimiento"
+        type="date" placeholder="Nacimiento" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="nacionalidad">Nacionalidad</label> <input
+        class="form-control" id="nacionalidad" name="nacionalidad"
+        type="text" ng-model="user.nacionalidad"
+        placeholder="Nacionalidad" />
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="ine">INE<span class="error">*</span></label> <input class="form-control"
+        id="ine" name="ine" type="text" placeholder="INE" required
+        ng-model="vm.datos.nif" />
+        <span ng-show="myform.ine.$touched">
+          <span class="error" ng-show="myform.ine.$error.required">* campo obligatorio</span>
+        </span>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="email">Email<span class="error">*</span></label> <input
+        class="form-control" id="email" name="email" type="email" required email
+        placeholder="Email" ng-model="vm.datos.email" />
+        <span ng-show="myform.email.$touched">
+          <span class="error" ng-show="myform.email.$error.required">* campo obligatorio</span>
+          <span class="error" ng-show="myform.email.$error.email">* debe ser un email v&aacute;lido</span>
+        </span>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <label for="cel">Celular<span class="error">*</span></label> <input
+        class="form-control" id="cel" name="cel" type="text" required
+        placeholder="cel" ng-model="vm.datos.cellphone" />
+        <span ng-show="myform.cel.$touched">
+          <span class="error" ng-show="myform.cel.$error.required">* campo obligatorio</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <button class="btn btn-primary btn-md" id="GuardarInfoPersonal" ng-show="validateForm()" ng-click="showFinanciera()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

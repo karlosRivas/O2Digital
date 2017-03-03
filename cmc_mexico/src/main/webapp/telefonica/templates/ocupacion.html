@@ -1,0 +1,98 @@
+<div class="panel-heading-info" role="tab" id="heading-ocupacion" ng-class="{'panel-completed' : completeForm }">
+  <h4 class="panel-title">
+    <a id="link-ocupacion" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-ocupacion" aria-expanded="false" aria-controls="collapse-ocupacion">
+      Datos Ocupación
+    </a>
+  </h4>
+</div>
+<div id="collapse-ocupacion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-ocupacion">
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Ocupacion">Ocupación</label> <select
+          class="form-control" id="Ocupacion" name="=cupacion">
+          <option>ASALARIADO(A)</option>
+          <option>ESTUDIANTE</option>
+          <option>AMA DE CASA</option>
+          <option>OTRO</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Estudios">Nivel de estudios</label> <select
+          class="form-control" id="Estudios" name="Estudios">
+          <option>Primaria</option>
+          <option>Secundaria</option>
+          <option>Bachillerato</option>
+          <option>Licenciatura</option>
+          <option>Maestría</option>
+          <option>Doctorado</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Actividad">Actividad Espeficifica</label> <input
+          class="form-control" id="Actividad" type="text"
+          placeholder="Actividad">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Ingreso">Ingreso neto mensual</label> <input
+          class="form-control" id="Ingreso" type="text"
+          placeholder="Ingreso mensual">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="NomEmpresa">Nombre de empresa</label> <input
+          class="form-control" id="NomEmpresa" type="text"
+          placeholder="Empresa">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="IniAct">Inicio de labores </label> <input
+          class="form-control" id="IniAct" type="date">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="TimeEmpleo">Antiguedad de empleo </label> <input
+          class="form-control" id="TimeEmpleo" type="text">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Puesto">Puesto</label> <input
+          class="form-control" id="Puesto" type="text"
+          placeholder="Puesto">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="TipoContrato">Tipo de contrato</label> <select
+          class="form-control" id="TipoContrato" name="TipoContrato">
+          <option>Indefinido</option>
+          <option>Temporal</option>
+          <option>En Practicas</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="TipoEmpresa">Tipo de Empresa</label> <select
+          class="form-control" id="TipoEmpresa" name="TipoEmpresa">
+          <option>Extractiva</option>
+          <option>Industrial</option>
+          <option>Comercial</option>
+          <option>De Servicios</option>
+          <option>Financiera</option>
+          <option>Contrucción</option>
+          <option>Otro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+          <button
+          class="btn btn-primary btn-md" id="GuardarInfOcupacion" ng-click="showCreateOp()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

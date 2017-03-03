@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Atento Bank</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+	<meta http-equiv="Content-type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
+	<!-- Bootstrap -->
+	<!--
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+	-->
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+
+	<!-- Librerias para los checkox y radios-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css" />
+	<link href="css/skins/all.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/estilos.css?v=${version}-${timestamp}" />
+
+
+	<!-- Librerias -->
+	<script src="js/jquery/jquery-1.12.0.min.js"></script>
+	<script src="js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+<!--
+<script type="text/javascript" src="js/funciones.js?v=${version}-${timestamp}"></script>
+-->
+	<script type="text/javascript" src="js/preview.js"></script>
+	<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.12/angular-animate.js"></script>
+
+	<!--
+	<script src="js/jquery-ui.min.js"></script>
+	-->
+	<script src="js/bootstrap-slider.js"></script>
+
+	<script src="js/icheck.min.js"></script>
+	<script src="js/custom.min.js"></script>
+	<!-- Api google maps-->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+
+	<!-- apiCheck is used by formly to validate its api -->
+	<script src="js/api-check.js"></script>
+
+	<!-- This is the current state of master for formly core. -->
+	<script src="js/formly.js"></script>
+	<!-- This is the current state of master for the bootstrap templates -->
+	<script src="js/angular-formly-templates-bootstrap.js"></script>
+	<script type="text/javascript" src="js/sha256.js"></script>
+	<script type="text/javascript" src="js/enc-base64-min.js"></script>
+</head>
+
+<body ng-app="formlyApp" ng-controller="MainController as vm" class="body">
+	<div class="spinner" ng-show="loading"></div>
+	<!--Imagen cargando-->
+
+	<div id="mydiv" ng-show="loading">
+		<img src="Images/cargando.gif" class="ajax-loader" />
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form name="myform" novalidate>
+							<div id="iframeO2div" ng-show="ready" class="animate-show iframepos" >
+								<iframe id="iframeO2" ng-src="{{detailFrame}}" align="middle" width="100%" height="800em" frameborder="0">
+									<p>Your browser does not support iframes.</p>
+								</iframe>
+							</div>
+
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-lg-12">
+
+										<div id="NavegacionNegra">
+											<div class="row">
+												<nav class="navbar navbar-inverse nav-custom">
+													<div class="navbar-header">
+														<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+															<span class="icon-bar"></span> <span class="icon-bar"></span>
+															<span class="icon-bar"></span>
+														</button>
+														<a class="navbar-brand text-white" href="">Inicio</a>
+													</div>
+													<div class="collapse navbar-collapse" id="myNavbar">
+														<ul class="nav navbar-nav ">
+															<li><a class="text-white" href="">Personas</a></li>
+															<li><a class="text-white" href="">Negocios</a></li>
+															<li><a class="text-white" href="">Empresas</a></li>
+														</ul>
+														<ul style="margin-right: 1em;"
+															class="nav navbar-nav navbar-right ">
+															<li class="dropdown">
+																<a class="dropdown-toggle text-white" data-toggle="dropdown" class="text-white" href="">
+																	<img src="Images/iconomexico.png" />México<span class="caret"></span>
+																</a>
+																<ul class="dropdown-menu">
+																	<li><a href="">Página 1-1</a></li>
+																	<li><a href="">Página 1-2</a></li>
+																	<li><a href="">Página 1-3</a></li>
+																</ul>
+															</li>
+															<li>
+																<input id="btnNavBusqueda" type="text" class="form-control margin-top-12" placeholder="Búsqueda" />
+															</li>
+
+															<li class="dropdown"><a class="dropdown-toggle text-white"
+																data-toggle="dropdown" class="text-white" href=""><img
+																	src="Images/candado.png">Banca personal por
+																	internet</a>
+																<ul class="dropdown-menu">
+																	<li><a href="">Página 1-1</a></li>
+																	<li><a href="">Página 1-2</a></li>
+																	<li><a href="">Página 1-3</a></li>
+																</ul></li>
+															<li>
+																	<input type="button" value="Entrar" class="btn btn-primary btn-xs margin-top-12">
+															</li>
+														</ul>
+													</div>
+												</nav>
+											</div>
+											<div class="row nav-white">
+												<nav class="navbar navbar-inverse" style="border: none; background-color: white; border-radius: 0 0 10px 10px;" id="MenuNavegacion" class="col-lg-10">
+													<img class="col-lg-2  col-sm-2 col-md-2 col-xs-5 img-responsive" style="margin-top: 7px;" src="Images/logoAtento.png" />
+													<div class="navbar-header">
+														<button type="button" style="background-color: black;"
+															class="navbar-toggle" data-toggle="collapse"
+															data-target="#myNavbar1">
+															<span class="icon-bar"></span> <span class="icon-bar"></span>
+															<span class="icon-bar"></span>
+														</button>
+														<div class="navbar-brand col-sm-6 col-md-6 col-xs-4"
+															href=""></div>
+													</div>
+													<div class="collapse navbar-collapse" id="myNavbar1">
+														<ul class="nav navbar-nav ">
+															<li><a href="">Cuentas y Tarjetas</a></li>
+															<li><a href="">Crédito Personal</a></li>
+															<li><a href="">Inversiones</a></li>
+															<li><a href="">Protección</a></li>
+															<li><a href="">Soy Cliente</a></li>
+														</ul>
+
+														<ul style="margin-right: 1em;" class="nav navbar-nav navbar-right ">
+															<li>
+																<center>
+																	<img style="margin-top: 7px;" class="img-responsive" src="Images/help.png">
+																</center>
+															</li>
+														</ul>
+													</div>
+												</nav>
+											</div>
+
+											<div class="row">
+												<div style="background-color: white; margin-top: -20px; border-radius: 0 0 10px 10px;" ng-show="showCarrusel">
+
+
+													<div id="myCarousel" class="carousel slide"
+														data-ride="carousel">
+														<!-- Indicators -->
+
+														<!-- Wrapper for slides -->
+														<div class="carousel-inner" role="listbox">
+
+															<div class="item active">
+																<img src="Images/slider1.1.jpg?t=${timestamp}" alt="Chania"
+																	width="1200" height="250">
+															</div>
+
+															<div class="item">
+																<img src="Images/slider2.2.jpg?t=${timestamp}" alt="Chania"
+																	width="1200" height="250">
+															</div>
+
+															<div class="item">
+																<img src="Images/slider4.4.jpg?t=${timestamp}" alt="Flower"
+																	width="1200" height="250">
+															</div>
+
+															<div class="item">
+																<img src="Images/slider5.5.jpg?t=${timestamp}" alt="Flower"
+																	width="1200" height="250">
+															</div>
+
+														</div>
+
+														<!-- Left and right controls -->
+														<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+															<span aria-hidden="true"></span> <span class="sr-only">Previous</span>
+														</a>
+														<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+															<span aria-hidden="true"></span> <span class="sr-only">Next</span>
+														</a>
+													</div>
+												</div>
+											</div>
+
+											<div id="DivRecuperar" class="row" ng-show="showCarrusel">
+												<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 0 0 10px 10px; padding-top: 7px;">
+													<label for="TextRecuperar" style="padding: 0px" class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-3 text-white">Recuperar solicitud </label>
+													<input class="col-lg-3 col-md-3 col-sm-3 col-xs-5" style="border-radius: 5px; height: 20px;" type="text" id="TextRecuperar" placeholder="RFC" />
+													<input class="col-lg-1 col-md-2 col-sm-2 col-xs-3 btn btn-primary btn-sm" type="button" id="BtnRecuperar" value="CONSULTAR" style="margin: 0px 0px 0px 1em; padding: 0px;" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								<div class="panel panel-info" ng-show="simulacion" ng-include="templates.simulacion.url"></div>
+								<div class="panel panel-info show" ng-show="aviso" ng-include="templates.aviso.url"></div>
+								<div class="panel panel-info show" ng-show="personal" ng-include="templates.personal.url"></div>
+								<div class="panel panel-info show" ng-show="financiera" ng-include="templates.financiera.url"></div>
+								<div class="panel panel-info show" ng-show="demograficos" ng-include="templates.demograficos.url"></div>
+								<div class="panel panel-info show" ng-show="ocupacion" ng-include="templates.ocupacion.url"></div>
+							</div>
+						</div>
+
+						<div class="row show text-center" ng-show="completeForm">
+							<div class="form-group">
+								<button id="BtnFirmarSucursal"
+									class="btn btn-primary" data-dismiss="modal"
+									data-toggle="modal" data-target="#ModalSucursal">Sucursal
+								</button>
+
+								<button id="BtnCrearOperacion" class="btn btn-primary"
+									data-dismiss="modal" data-toggle="modal"
+									data-target="#modalEnLinea">En linea</button>
+							</div>
+						</div>
+
+							<!--MODALES-->
+
+							<!-- Modal empezar video-->
+							<div class="modal fade" id="modalEnLinea" role="dialog">
+								<div class="modal-dialog modal-md">
+									<div class="modal-content">
+										<div class="modal-header">
+											<center>
+												<img src="Images/logoAtento.png">
+												<h4 class="modal-title">
+													<b>Verifica que los datos sean correctos</b>
+												</h4>
+											</center>
+										</div>
+										<div class="modal-body">
+											<formly-form model="vm.datos" fields="vm.datosFields"
+												form="vm.datosForm" ng-show="!ready"> <!--<button type="submit" class="btn btn-primary" ng-disabled="vm.datosForm.$invalid" ng-show="!ready" >Comenzar identificación</button>-->
+											</formly-form>
+
+										</div>
+										<div class="modal-footer">
+											<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+											<center>
+												<button type="submit" class="btn btn-primary"
+													ng-click="vm.onSubmit()"
+													ng-disabled="vm.datosForm.$invalid" data-dismiss="modal"
+													ng-show="!ready">Comenzar identificación</button>
+												<!--<button ng-click="vm.Prueba()" type="submit" class="btn btn-primary" >Comenzar identificación</button>-->
+											</center>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<!--Modal Cargando-->
+							<div class="container">
+								<div class="modal fade" id="BlockModal" role="dialog"
+									tabindex="-1" aria-labelledby="mySmallModalLabel">
+									<div class="modal-dialog modal-sm">
+										<div class="col-xs-2"></div>
+										<div class="modal-content col-xs-8"
+											style="background-color: rgba(255, 255, 255, 0.8); border-radius: 33px;">
+											<div class="modal-body">
+												<center>
+													<img style="width: 100%;" src="Images/cargando.gif">
+												</center>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--Modal Pop-up cotizacion por correo electronico-->
+							<div class="modal fade" id="myModalCotizacion" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<center>
+												<img src="Images/logoAtento.png">
+												<h4 class="modal-title">
+													<b>Enviar cotización por Email</b>
+												</h4>
+											</center>
+										</div>
+										<div class="modal-body">
+											<form class="form-horizontal">
+
+												<div class="form-group">
+													<label class="control-label col-sm-2 text-left"
+														for="CotizacionNombre">*Nombre(s)</label>
+													<div class="col-sm-10">
+														<input type="text" ng-model="vm.datos.name"
+															class="form-control" id="CotizacionNombre"
+															placeholder="Nombre" />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="control-label col-sm-2 text-left"
+														for="CotizacionLastname">*Apellidos</label>
+													<div class="col-sm-10">
+														<input type="text" ng-model="vm.datos.lastname"
+															class="form-control" id="CotizacionLastname"
+															placeholder="Apellidos" />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="control-label col-sm-2 text-left"
+														for="CotizacionCel">*Celular</label>
+													<div class="col-sm-10">
+														<input type="text" ng-model="vm.datos.cellphone"
+															class="form-control" id="CotizacionCel"
+															placeholder="Celular" />
+													</div>
+												</div>
+
+
+												<div class="form-group">
+													<label class="control-label col-sm-2 text-left"
+														for="CotizacionEmail">*Email</label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control"
+															ng-model="vm.datos.email" id="CotizacionEmail"
+															placeholder="Email" />
+													</div>
+												</div>
+												&nbsp
+											</form>
+										</div>
+										<div class="modal-footer">
+											<center>
+												<button type="button" class="btn btn-primary"
+													data-dismiss="modal" id="BtnCotizacionAceptar" ng-click="hideButtonEmail()">Enviar</button>
+											</center>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Modal Leer Aviso-->
+							<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal-dialog modal-md ">
+									<div class="modal-content">
+										<div id="HeaderModal" class="modal-header">
+											<center>
+												<img src="Images/logoAtento.png" />
+												<h4 class="modal-title">Aviso de privacidad Atento</h4>
+											</center>
+										</div>
+										<div class="modal-body">
+											<p id="ParrafoAviso">
+												Grupo Financiero Atento México hace de su conocimiento que
+												sus datos personales serán protegidos de acuerdo a lo
+												establecido por la ley Federal de Protección de datos
+												Personales en Posesión de los particulares. Usted podrá
+												consultar nuestro aviso de privacidad completo en la página
+												<a href="www.atento.com.mx">www.atento.com.mx</a>
+											</p>
+										</div>
+										<div class="modal-footer">
+											<button id="BtnAceptarAviso" type="button"
+												class="btn btn-primary" data-dismiss="modal" ng-click="showPersonal()">Marcar
+												como leído</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Termina el modal-->
+
+							<!--Modal Pop-up de Buro-->
+							<div class="modal fade" id="myModalBuro">
+								<div class="modal-dialog modal-md">
+									<div class="modal-content">
+										<div id="HeaderModal" class="modal-header">
+											<div class="row text-center">
+												<img src="Images/logoAtento.png" />
+											</div>
+											<!--<h4 class="modal-title">¡Enhorabuena!<br> tu crédito ha sido pre-aprobado</h4>-->
+											<h4>
+												El crédito final que podemos otorgarte es de:&nbsp<b>{{credito.monto | currency}}</b>
+											</h4>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+													<table class=" table table-hover">
+														<thead>
+															<tr style="color: white; background-color: #003d92;">
+																<!--<th >Selección</th>-->
+																<th class="col-xs-6">Plazo</th>
+																<!--<th class="col-xs-5">Ingreso minimo</th>-->
+																<th class="col-xs-6">Pago
+																	mensual</th>
+																</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td class="col-xs-6"><input type="radio"
+																	value="24meses" id="CheckBoxMesesFinal"
+																	name="CheckBoxMesesFinal" icheck ng-model="credito.checkMeses"/>
+																	<output style="display: inline; color: #003c92;">24
+																		meses</output>
+																</td>
+																		<!--<td class="col-xs-5" ><output id="IngresoMinimoFinal24" ></output></td>-->
+																<td class="col-xs-6">
+																	<output id="PagoMensualFinal24"
+																		style="color: #003c92;">{{credito.min24 | currency}}</output></td>
+															</tr>
+
+															<tr>
+																<td class="col-xs-2"><input type="radio"
+																	id="CheckBoxMesesFinal" name="CheckBoxMesesFinal"
+																	value="36meses" icheck ng-model="credito.checkMeses"/>
+																	<output style="display: inline; color: #003c92;">36
+																		meses</output></td>
+																		<!--<td>36 Meses</td>-->
+																		<!--<td class="col-xs-5"><output id="IngresoMinimoFinal36"></output></td>-->
+																<td class="col-xs-6"><output
+																	style="color: #003c92;">{{credito.min36 | currency}}</output></td>
+															</tr>
+
+															<tr>
+																<td class="col-xs-6"><input type="radio"
+																	id="CheckBoxMesesFinal" name="CheckBoxMesesFinal"
+																	value="48meses" icheck ng-model="credito.checkMeses"/>
+																	<output style="display: inline; color: #003c92;">48
+																		meses</output></td>
+																		<!--<td>48 Meses</td>-->
+																		<!--<td class="col-xs-5"><output id="IngresoMinimoFinal48"></output></td>-->
+																<td class="col-xs-6"><output
+																	style="color: #003c92;">{{credito.min48 | currency}}</output></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button style="float: left;" type="button"
+												class="btn btn-primary" data-dismiss="modal"
+												id="BtnNuevaSimulacion">Nueva simulación</button>
+											<button style="float: right;" type="button"
+												class="btn btn-primary" data-dismiss="modal"
+												id="BtnAceptarBuro" ng-click="sendBuro()">Aceptar</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--Modal Pop-up Finalizar-->
+							<div class="modal fade" id="myModalFinalizar" role="dialog">
+								<div class="modal-dialog modal-md">
+									<div class="modal-content">
+										<div id="HeaderModal" class="modal-header">
+											<center>
+												<img src="Images/logoAtento.png">
+											</center>
+											<!--<h4 class="modal-title">Las condiciones crediticias pueden diferir de las solicitadas</h4>-->
+										</div>
+										<div class="modal-body">
+											<center>
+												<img id="ImgCheck" style="width: 35%;"
+													src="Images/cotizacion.gif"> <label class="">¡Enhorabuena!
+													tu crédito ha sido preaprobado. A continuación recibirás un
+													email con las condiciones. Puedes concluir con el proceso
+													bajo las siguientes modalidades: </label>
+											</center>
+										</div>
+										<div class="modal-footer">
+
+											<center>
+												<button id="BtnFirmarSucursal" class="btn btn-primary"
+													data-dismiss="modal" data-toggle="modal"
+													data-target="#ModalSucursal">Sucursal</button>
+
+												<button id="BtnCrearOperacion" class="btn btn-primary"
+													data-dismiss="modal" data-toggle="modal"
+													data-target="#myModalOperacion">En linea</button>
+											</center>
+										</div>
+										<!--Termina el modal-->
+									</div>
+								</div>
+							</div>
+
+							<!--Modal Pop-up Buscar sucursal-->
+							<div class="modal fade" id="ModalSucursal">
+								<div class="modal-dialog modal-lg ">
+									<div class="modal-content">
+										<div id="HeaderModal" class="modal-header">
+											<center>
+												<img src="Images/logoAtento.png" />
+											</center>
+											<!--<h4 class="modal-title">Firmar en Sucursal</h4>-->
+										</div>
+										<div class="modal-body" style="margin-top: -20px;">
+											<h4>Presentar la siguiente documentación:</h4>
+											<ol>
+												<li>Solicitud de crédito</li>
+												<li>Condiciones crediticias</li>
+												<li>Comprobantes de ingresos</li>
+												<li>Comprobante de domicilio</li>
+												<li>Identificación oficial</li>
+											</ol>
+											<!-- <div id="map-canvas"></div>-->
+
+											<iframe
+												src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d30102.047796000315!2d-99.12664901461596!3d19.42294682500938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sAtento!5e0!3m2!1ses-419!2smx!4v1478535841184"
+												width="100%" height="250em" frameborder="0"
+												style="border: 0" allowfullscreen></iframe>
+
+										</div>
+										<div class="modal-footer">
+											<button id="BtnAceptarMapa" type="button"
+												class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<!-- Application Dependencies -->
+
+<!-- Application Scripts -->
+<script src="app.js?v=${version}-${timestamp}"></script>
+<script src="scripts/config.js?v=${version}&t=${timestamp}"
+	charset="utf-8"></script>
+<script src="scripts/MainController.js?v=${version}&t=${timestamp}"
+	charset="utf-8"></script>
+<script src="scripts/province.js?v=${version}&t=${timestamp}"
+	charset="utf-8"></script>
+</html>

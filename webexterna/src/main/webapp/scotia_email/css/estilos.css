@@ -1,0 +1,156 @@
+    /* http://css-tricks.com/perfect-full-page-background-image/ */
+    /*html {
+      background: url(../Images/fondo.jpg) no-repeat center center fixed;
+      z-index: 1;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }*/
+
+#tarjetas {
+  background-color: red;
+ 
+}
+ #nav ul li a:hover { 
+    background-color: #696969;
+    color:white;
+}
+
+/*#ul{
+background-color: ;
+}*/
+    .body {
+    
+    background: url(../Images/fondo.jpg) no-repeat center center fixed;
+    /*background-image: url("../Images/fondo.jpg");*/
+      z-index: 1;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+
+
+      /*margin-top:-20px;  */
+      font-size: 15px;
+      font-family: "Open Sans",serif;
+      padding: 0px;
+
+    }
+
+    
+    #map-canvas{
+     
+      height: 500px;
+    } 
+
+    .trans {
+      
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      padding: 0px;
+      /*margin-top: 10px;*/
+    }
+    
+    .header {
+      background-color: rgba(255, 255, 255, 1);
+      
+    }
+   
+
+#ex1Slider .slider-selection {
+  background: #3b3a3a;
+}
+
+#ex1Slider .slider-handle {
+  background:red ;
+}
+
+.Recuperar{background-color: rgba(0, 0, 0,0.6); padding:5px; border-radius: 6px 6px 6px 6px;  color: white;}
+
+ #ModalCargando{background-color:rgba(255, 255, 255,0.8); border-radius:33px;}
+
+
+#MenuNavegacion a{color:black;}
+
+#ImgNavegacion,#ImgLinea{ width: 100%; } 
+
+#header{  border: 1px solid black ; }
+#LinksNavegacion a{ text-decoration: underline; }
+#ImagenAyuda, #BtnCliente{margin-top: 1em;}
+
+#Ayuda{float: right; font-size: 27}
+#CuadroDatos{  border-style: groove; margin-top:1em;}
+/*estilos div preguntas de credito*/
+
+#DivDatos,#DivCredito,#DivAviso,#DivInfoPersonal,#DivInfoFinanciera,#DivInfoDemografica,#DivInfOcupacion,#DivRecepDoc{margin-top: 1em;}
+#DivHeadDatos,#DivHeadCredito,#DivHeadAviso,#DivHeadInfoPersonal,#DivHeadInfoFinanciera,#DivHeadInfoDemografica,#DivHeadInfOcupacion,#DivHeadRecepDoc{border:1px solid red; background: #ee3424;  border-radius: 10px 10px 0 0;}
+
+
+
+/*{border:1px solid red; background: red; width:917px; height: 3em; border-radius: 10px 10px 0 0;}*/
+
+#LinkDatos,#LinkCredito,#LinkAviso,#LinkInfoPersonal,#LinkInfoFinanciera,#LinkInfoDemografica,#LinkInfOcupacion,#LinkRecepDoc{ color:white; margin-left:1em; font-size: 120%; text-decoration: none;}
+#CuerpoDatos,#CuerpoCredito,#CuerpoAviso,#CuerpoInfoPersonal,#CuerpoInfoFinanciera,#CuerpoInfoDemografica,#CuerpoInfOcupacion,#CuerpoRecepDoc{border-radius: 10px 10px 10px 10px;}
+/*estilos div para seleccionar los meses*/
+
+.pbottom{
+  padding-bottom: 1em;
+}
+
+
+
+#CuadroDatos h5{  text-align: left; }
+
+
+#Titulo{text-align: center;}
+
+#ImgPasos{ width:30%; }
+
+#TextSimulacion {text-align: center;}
+
+#TextCheckBuro{text-align: justify;}
+
+#textBuro{text-align: justify;  }
+#BtnCalificar{margin-bottom: 1em;}
+
+#ParrafoAviso{text-align: justify;}
+
+
+
+#fecha{ display:inline; }
+
+#ImgInferior1{width: 100%; height: 1px;}
+
+#BtnContinuar{margin-bottom: 1em;}
+
+#BtnConsultarHsbc,#BtnConsultarBuro{margin-left: 1em;}
+
+#BtnCancelar{margin-bottom: 1em;}
+
+#ImgCheck{width: 80%;}
+
+#ImgBuro{width: 50%;}
+
+
+
+
+
+ .btn-file {
+  position: absolute;;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}

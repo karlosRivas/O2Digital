@@ -1,0 +1,134 @@
+<div class="panel-heading-info" role="tab" id="heading-demograficos" ng-class="{'panel-completed' : completeForm }">
+  <h4 class="panel-title">
+    <a id="link-demograficos" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-demograficos" aria-expanded="false" aria-controls="collapse-demograficos">
+      Datos Demográficos
+    </a>
+  </h4>
+</div>
+<div id="collapse-demograficos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-demograficos">
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Sexo">Sexo</label> <select class="form-control"
+          id="Sexo" name="sexo">
+          <option>Masculino</option>
+          <option>Femenino</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Estado">Estado Civil</label> <select
+          class="form-control" id="Estado" name="Estado">
+          <option>Soltero(a)</option>
+          <option>Casado(a)</option>
+          <option>Unión libre</option>
+          <option>Separada(a)</option>
+          <option>Divorciado(a)</option>
+          <option>Viudo(a)</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Dependencia">Dependencia Economica</label> <input
+          class="form-control" id="Dependencia" type="text"
+          placeholder="No. Dependencia">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="Vivienda">Tipo de Vivienda</label> <select
+          class="form-control" id="Vivienda" name="Vivienda"
+          placeholder="Vivienda">
+          <option>Propia</option>
+          <option>Arrendada</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="AntiguedadDom">Antiguedad de domicilio:</label>
+        <input class="form-control" id="AntiguedadDom" type="text"
+          placeholder="Años">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="cp">CP</label> <input class="form-control"
+          id="cp" type="text" placeholder="CP">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="colonia">Colonia</label> <input
+          class="form-control" id="colonia" type="text"
+          placeholder="Colonia">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="mundel">Mucipio / Delegación</label> <input
+          class="form-control" id="mundel" type="text"
+          placeholder="Municipio / Delegación">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="mundel">Entidad Federativa</label> <select
+          class="form-control" id="entidad" name="entidad">
+          <option value="0">Todo México</option>
+          <option value="1">Aguascalientes</option>
+          <option value="2">Baja California</option>
+          <option value="3">Baja California Sur</option>
+          <option value="4">Campeche</option>
+          <option value="5">Coahuila de Zaragoza</option>
+          <option value="6">Colima</option>
+          <option value="7">Chiapas</option>
+          <option value="8">Chihuahua</option>
+          <option value="9">CDMX</option>
+          <option value="10">Durango</option>
+          <option value="11">Guanajuato</option>
+          <option value="12">Guerrero</option>
+          <option value="13">Hidalgo</option>
+          <option value="14">Jalisco</option>
+          <option value="15">México</option>
+          <option value="16">Michoacán</option>
+          <option value="17">Morelos</option>
+          <option value="18">Nayarit</option>
+          <option value="19">Nuevo León</option>
+          <option value="20">Oaxaca</option>
+          <option value="21">Puebla</option>
+          <option value="22">Querétaro</option>
+          <option value="23">Quintana Roo</option>
+          <option value="24">San Luis Potosí</option>
+          <option value="25">Sinaloa</option>
+          <option value="26">Sonora</option>
+          <option value="27">Tabasco</option>
+          <option value="28">Tamaulipas</option>
+          <option value="29">Tlaxcala</option>
+          <option value="30">Veracruz</option>
+          <option value="31">Yucatán</option>
+          <option value="32">Zacatecas</option>
+        </select>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="calle">Calle</label> <input class="form-control"
+          id="calle" type="text" placeholder="Calle">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="numext">Número exterior</label> <input
+          class="form-control" id="numext" type="text"
+          placeholder="Número Ext.">
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="numint">Número interior</label> <input
+          class="form-control" id="numint" type="text"
+          placeholder="Número int.">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <button class="btn btn-primary btn-md" id="GuardarInfoDemografica" ng-click="showCreateOp()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

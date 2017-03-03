@@ -1,0 +1,119 @@
+
+  <div class="panel-heading-info" role="tab" id="heading-simulacion" ng-class="{'panel-completed' : aviso }">
+    <h4 class="panel-title">
+      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-simulacion" aria-expanded="true" aria-controls="collapse-simulacion">
+        Realice una simulación
+      </a>
+    </h4>
+  </div>
+  <div id="collapse-simulacion" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-simulacion">
+    <div class="panel-body">
+      <div class="row" style="display: none">
+        <input
+        class="number form-control" id="TextMonto" name="TextMonto"
+        aria-label="Amount (to the nearest dollar)" type="text"
+        placeholder="Monto solicitado" ng-model="credito.monto" required/>
+
+        <input class="form-control" id="TextIngreso" type="text" name="TextIngreso"
+        placeholder="Ingreso mensual" ng-model="credito.ingreso" required/>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
+          <label for="TextMonto">*¿Qué monto desea solicitar?</label> <input
+          class="number form-control"
+           type="text"
+          placeholder="Monto solicitado" value="{{credito.monto | currency}}"/>
+
+          <label id="ObligatorioMonto" class="control-label error" ng-show="!myform.$pristine && myform.TextMonto.$error.required">* campo obligatorio</label>
+        </div>
+
+        <div class="col-lg-6 col-xs-12 col-sm-12 col-md-6">
+          <label for="TextIngreso">*¿Cuál es su ingreso mensual?</label>
+          <input class="form-control" id="TextIngreso" type="text" name="TextIngreso"
+          placeholder="Ingreso mensual" value="{{credito.ingreso | currency}}"/> <label
+          id="ObligatorioIngreso" class="control-label error" ng-show="!myform.$pristine && myform.TextIngreso.$error.required">* campo obligatorio</label>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6 col-xs-12 col-sm-12 "
+          style="border-radius: 10px; margin-top: 1em;">
+          <input class="form-control" slider ng-model="$parent.credito.ingreso" style="width: 100%;" id="ex8"
+          ng-change="updateData()"
+          data-slider-id='ex1Slider' type="text" data-slider-min="0"
+          data-slider-max="100000" data-slider-step="1000"
+          data-slider-value="0" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-xs-12 col-sm-12 col-md-12">
+          <div class="panel panel-info">
+            <div class="panel-body-inner">
+              <div class="row">
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="table-responsive" id="tabla">
+                    <h4>Seleccione los meses de su interés</h4>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr style="color: white; background-color: #003d92;">
+                          <!--<th >Selección</th>-->
+                          <th class="col-lg-2">Plazo</th>
+                          <th class="col-lg-5">Ingreso mínimo</th>
+                          <th class="col-lg-5">Pago mensual</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="col-xs-2">
+                            <!--<input type="checkbox" class="checkbox" id="CheckBoxMeses" onclick="window.scrollTo(0,300);"/>-->
+                            <input icheck type="radio" id="CheckBoxMeses24" name="CheckBoxMeses" value="24meses" ng-model="credito.checkMeses" ng-change="scrollCheckMeses()" />
+                            <label for="CheckBoxMeses24">24</label>
+                          </td>
+                          <!--<td class="col-xs-3">24 Meses</td>-->
+                          <td class="col-xs-5"><output>{{credito.min24 | currency}}</output></td>
+                          <td class="col-xs-5"><output>{{credito.pago24 | currency}}</output></td>
+                        </tr>
+                        <tr>
+                          <td class="col-xs-2">
+                            <input icheck type="radio" id="CheckBoxMeses36" name="CheckBoxMeses" value="36meses" ng-model="credito.checkMeses" ng-change="scrollCheckMeses()"/>
+                            <label for="CheckBoxMeses36">36</label>
+                          </td>
+                          <!--<td>36 Meses</td>-->
+                          <td class="col-xs-5"><output>{{credito.min36 | currency}}</output></td>
+                          <td class="col-xs-5"><output>{{credito.pago36 | currency}}</output></td>
+                        </tr>
+                        <tr>
+                          <td class="col-xs-2">
+                            <input icheck type="radio" id="CheckBoxMeses48" name="CheckBoxMeses" value="48meses" ng-model="credito.checkMeses" ng-change="scrollCheckMeses()"/>
+                            <label for="CheckBoxMeses48">48</label>
+                          </td>
+                          <!--<td>48 Meses</td>-->
+                          <td class="col-xs-5"><output>{{credito.min48 | currency}}</output></td>
+                          <td class="col-xs-5"><output>{{credito.pago48 | currency}}</output></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row show" ng-show="showButtonContinue() && cotizacionEmail">
+        <!--Botones para Continuar-->
+        <button id="BtnCotizacion" class="btn btn-primary"
+          data-toggle="modal" data-target="#myModalCotizacion"
+          style="margin-left: 2em;">Cotización por Email</button>
+        <img id="ImgInferior1" src="Images/lineainferior.png" />
+      </div>
+
+      <div class="row show text-center" ng-show="showButtonContinue()">
+        <button class="btn btn-primary" id="BtnContinuar" ng-click="showAviso()">Continuar</button>
+      </div>
+    </div>
+  </div>

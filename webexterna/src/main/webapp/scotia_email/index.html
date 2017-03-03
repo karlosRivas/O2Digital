@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"> 
+    <title>Scotiabank</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+     <meta http-equiv="Content-type" content="text/html" charset="UTF-8"/>﻿
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
+<!-- This is the latest version of angular (at the time this template was created) -->
+    <script src="js/angular.js"></script>
+
+  <!-- Bootstrap --> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css"> 
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="css/estilos.css"/> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css"/>
+
+  <!-- Librerias -->
+
+  <script src="js/jquery/jquery-1.12.0.min.js"></script>
+  <script src="js/angular/angular.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" src="js/funciones.js"> </script>
+  <script type="text/javascript" src="js/preview.js"> </script>
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/bootstrap-slider.js"></script>
+  
+  <!-- Librerias para los checkox y radios-->
+  <link href="css/skins/all.css" rel="stylesheet">
+  <script src="js/icheck.min.js"></script>
+  <script src="js/custom.min.js"></script>
+  <!-- Api google maps-->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Twitter bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- apiCheck is used by formly to validate its api -->
+    <script src="js/api-check.js"></script>
+    <!-- This is the latest version of angular (at the time this template was created) -->
+    <script src="js/angular.js"></script>
+
+    <!-- This is the current state of master for formly core. -->
+    <script src="js/formly.js"></script>
+    <!-- This is the current state of master for the bootstrap templates -->
+    <script src="js/angular-formly-templates-bootstrap.js"></script>
+
+    <script type="text/javascript" src="js/sha256.js"></script>
+    <script type="text/javascript" src="js/enc-base64-min.js"></script>
+    <style>
+        #mydiv {  
+    position:absolute;
+    top:15em;
+    left: 35em;
+    width: 12em;
+   border-radius: 10px; 
+    z-index:10000;
+   /*background-color:red;*/
+   /* opacity: .8;*/
+ }
+
+/*.bodystyle{
+	background-color: aqua;
+}*/
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -32px;  /* -1 * image height / 2 */
+    display: block;     
+}
+
+#mydiv img{
+   width: 100%;
+   background-color:rgba(255, 255, 255,0.8);
+    border-radius:33px;
+}
+.iframepos{
+    position: absolute;
+    top:2em;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color: white;
+    allowtransparency: false;
+    /*background-image: Images/cargando.gif;*/
+    /*opacity: .9;*/
+    /*margin-left: -100px; /* -1 * image width / 2 */
+    margin-top:  -50px;  /* -1 * image height / 2 */
+    /*display: block; */    
+    border-radius: 10px;
+}
+    </style>
+
+</head>
+<body ng-app="formlyApp" ng-controller="MainController as vm" class="body">
+ <div class="spinner" ng-show="loading"></div>
+  
+    <!--Imagen cargando-->
+    
+     <div  id="mydiv" ng-show="loading">
+        <img src="Images/cargando.gif" class="ajax-loader"/>
+     </div>
+
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-12">
+    <div class="panel panel-default" >
+     <div class="panel-body">
+      <form name="myform" novalidate>
+
+                    
+ 
+
+
+        <div id="iframeO2div" ng-show="ready" class="animate-show iframepos">
+         <iframe id="iframeO2" ng-src="{{detailFrame}}" align="middle" width="100%" height="800em" frameborder="0">
+         <p>Your browser does not support iframes.</p>
+         </iframe>
+        </div>
+
+
+
+      
+        <div class="container-fluid">
+         <div class="row">
+          <div class="col-lg-12">
+            
+          <div id="NavegacionNegra" >
+           <div class="row" >
+             <nav class="navbar navbar-inverse" style=" border-radius:10px 10px 0 0;">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Inicio</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">    
+               <ul class="nav navbar-nav ">
+                  <li><a href="">Personas</a></li>
+                  <li><a href="">Negocios</a></li>
+                  <li><a href="">Empresas</a></li>       
+               </ul>
+               <ul style="margin-right: 1em;" class="nav navbar-nav navbar-right " >
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href=""><img src="Images/iconomexico.png">México<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="">Página 1-1</a></li>
+                      <li><a href="">Página 1-2</a></li>
+                      <li><a href="">Página 1-3</a></li>
+                    </ul>
+                  </li>
+                  <li><input type="text" class="form-control" placeholder="Búsqueda" style="margin-top: 12px; height: 20px;">
+                  </li> 
+
+                  <li class="dropdown">
+                    <a class="dropdown-toggle " data-toggle="dropdown" href=""><img src="Images/candado.png">Banca personal por internet</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="">Página 1-1</a></li>
+                      <li><a href="">Página 1-2</a></li>
+                      <li><a href="">Página 1-3</a></li>
+                    </ul>
+                  </li>
+                  <li><center><input type="button" value="Entrar" style="margin-top: 12px; " class="btn btn-danger btn-xs"></center>
+                  </li>
+               </ul>
+              </div>
+             </nav>
+           </div>
+          </div>        
+
+          <div id="NavegacionBlanca">
+           <div class="row">
+            <div style=" background-color: white; margin-top: -20px; border-radius:0 0 10px 10px;">  
+             <nav class="  navbar navbar-inverse" style="border:none; background-color: white; border-radius:0 0 10px 10px;" id="MenuNavegacion" class="col-lg-10">
+              <img class="col-lg-2  col-sm-2 col-md-2 col-xs-5 img-responsive"  style="margin-top:7px;" src="Images/logo.png"/>
+               <div class="navbar-header"  >
+                  <button type="button" style="background-color:black;" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar1" >
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <div class="navbar-brand col-sm-6 col-md-6 col-xs-4"  href=""></div>
+               </div>
+               <div id="nav" class="collapse navbar-collapse" >
+                  <ul class="nav navbar-nav" >
+                    <li id="tarjetas"><a href="" style="color: white;">Cuentas y Tarjetas</a></li>
+                    <li><a href="">Crédito Personal</a></li>
+                    <li><a href="">Inversiones</a></li>
+                    <li><a href="">Protección</a></li>
+                    <li><a href="">Soy Cliente</a></li> 
+                  </ul>
+
+                  <ul style="margin-right: 1em;" class="nav navbar-nav navbar-right " >
+                    <li><center><img style="margin-top: 7px;" class="img-responsive" src="Images/help.png"></center></li>
+                  </ul>
+               </div> 
+             </nav>
+
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" >
+
+                  <div class="item active">
+                    <img  src="Images/slider1.png" alt="Chania" width="1200" height="250" style="border-radius:0 0 0px 0px;">
+                  </div>
+
+                  <div class="item">
+                    <img  src="Images/slider2.png" style="border-radius:0 0 0px 0px;" alt="Chania" width="1200"  height="250">
+                  </div>
+              
+                  <!--<div class="item">
+                    <img src="Images/slider3.3.jpg" style="border-radius:0 0 0px 0px;" alt="Flower" width="1200"  height="250">
+                  </div>-->
+              
+                  <div class="item">
+                    <img src="Images/slider3.png" style="border-radius:0 0 0px 0px;" alt="Flower" width="1200"  height="250">
+                  </div>
+                  
+                  <!--<div class="item">
+                    <img src="Images/slider5.5.jpg" style="border-radius:0 0 0px 0px;" alt="Flower" width="1200"  height="250">
+                  </div>-->
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+           </div>  
+          </div>
+
+           
+
+         <div id="DivRecuperar" class="row" >
+           <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 0 0 10px 10px; padding-top: 7px; ">
+              <label  for="TextRecuperar" style=" padding:0px; color:white;" class="control-label col-lg-2 col-md-3 col-sm-3  col-xs-3" >Recuperar solicitud
+              </label>           
+              <input  class="col-lg-3 col-md-3 col-sm-3 col-xs-5" style=" border-radius: 5px;" type="text" id="TextRecuperar" placeholder="RFC" />
+              <input class="col-lg-1 col-md-2 col-sm-2 col-xs-3 btn btn-danger btn-sm" type="button" id="BtnRecuperar" value="CONSULTAR" style="margin:5px 0px 0px 1em;  padding: 0px;  " />
+              
+           </div>
+           
+         </div>
+
+          </div>
+         </div>
+        </div>    
+        
+      
+
+        <div id="DivHeadCredito" ><a id="LinkCredito">Selecciona la Scotia Travel de tu interés</a></div>  
+         <div id="CuerpoCredito" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+          <div class="panel-body">       
+
+              <!--<div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
+                <label for="TextMonto">*Selecciona una tarjeta</label>
+                <!--<input class="number form-control" id="TextMonto" aria-label="Amount (to the nearest dollar)"  type="text" placeholder="Monto solicitado"  />
+
+                <select id="tiposTarjetas" class="form-control" >
+                            <option value="Nada"></option>
+                            <option value="travelClasica">Scotia Travel Clasica</option>
+                            <option value="travelOro">Scotia Travel Oro</option>
+                            <option value="travelPlatinum">Scotia Travel Platinum</option>
+                            <option value="travelElite">Scotia Travel World Elite</option>
+                            <option value="tradicionalClasicaOro">Scotia Tradicional Clásica y Oro</option>
+                            <option value="tasaBaja">Scotia Tasa Baja Clásica y Oro</option>
+                            <option value="Linio">Linio Scotiabank</option>
+               </select>
+               
+              </div>-->
+
+            <div class="col-lg-12 col-md-12">
+             <div class="col-lg-3 col-md-3"></div>
+             <div class="col-lg-6 col-xs-12 col-sm-12 col-md-6" >
+                <label for="TextIngreso">*¿Cuál es su ingreso mensual?</label>
+                <input class="form-control" id="TextIngreso" type="text"  placeholder="Ingreso mensual" />
+                <label  id="ObligatorioIngreso" class="control-label" style="color:red;">*campo obligatorio</label> 
+              </div>
+            </div><br>
+
+            <div class="col-lg-12 col-md-12">
+             <div class="col-lg-3 col-md-3"></div>  
+              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 " style=" border-radius:10px; margin-top: 1em;">
+                <input class="form-control" style="width:100%;" id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100000" data-slider-step="1000" data-slider-value="0"/>
+              </div>
+            </div>  
+            
+              <div class="col-lg-12">
+              <div class="col-lg-2"></div>           
+               <div class="panel panel-info col-lg-8 col-xs-12 col-sm-12 col-md-12 " style=" margin-top: 1em;">  
+                 <label class="control-label">Selecciona la tarjeta de tu interés</label>
+                 <div id="tabla" > 
+                 <table class="table table-hover  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <thead >
+                       <tr  style="color:white; background-color: #ee3424;">
+                          <!--<th >Selección</th>-->
+                          <th class="col-lg-4">TDC</th>
+                          <th class="col-lg-4">Ingreso mínimo</th>
+                          <th class="col-lg-4">Anual</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <td class="col-xs-2"> <!--<input type="checkbox" class="checkbox" id="CheckBoxMeses" onclick="window.scrollTo(0,300);"/>-->
+                            <input type="radio" id="CheckBoxMeses" name="CheckBoxMeses" value="Scotia Travel Clásica" />Scotia Travel Clásica 
+                          </td>
+                          <!--<td class="col-xs-3">24 Meses</td>-->
+                          <td class="col-xs-5" ><output id="IngresoMinimo24" ></output></td>
+                          <td class="col-xs-5"><output id="PagoMensual24"></output></td>
+                       </tr>   
+                       <tr>
+                          <td class="col-xs-2">
+                          <input type="radio" id="CheckBoxMeses"  name="CheckBoxMeses" value="Scotia Travel Oro" />Scotia Travel Oro 
+                          </td>
+                          <!--<td>36 Meses</td>-->
+                          <td class="col-xs-5"><output id="IngresoMinimo36"></output></td>
+                          <td class="col-xs-5"><output id="PagoMensual36"></output></td>
+                       </tr>
+                       <tr>
+                          <td class="col-xs-2">
+                          <input type="radio" id="CheckBoxMeses" name="CheckBoxMeses" value="Scotia Travel Platinum" />Scotia Travel Platinum 
+                          </td>
+                          <!--<td>48 Meses</td>-->
+                          <td class="col-xs-5"><output id="IngresoMinimo48"></output></td>
+                          <td class="col-xs-5"><output id="PagoMensual48"></output></td>
+                      </tr>
+                       <tr>
+                          <td class="col-xs-2">
+                          <input type="radio" id="CheckBoxMeses" name="CheckBoxMeses" value="Scotia Travel World Elite" />Scotia Travel World Elite 
+                          </td>
+                          <!--<td>48 Meses</td>-->
+                          <td class="col-xs-5"><output id="IngresoMinimo60"></output></td>
+                          <td class="col-xs-5"><output id="PagoMensual60"></output></td>
+                      </tr>
+                    </tbody>
+                 </table>
+                 </div> 
+                
+               </div>
+              </div>
+
+          </div>
+            
+            
+             <!--Botones para Continuar-->
+             <button id="BtnCotizacion"  class="btn btn-danger"  data-toggle="modal" data-target="#myModalCotizacion" style="margin-left: 2em; ">Cotización por Email</button>
+             <img id="ImgInferior1" src="Images/lineainferior.png"/>     
+             <center><button class="btn btn-danger pbottom" id="BtnContinuar">Continuar</button></center>
+         </div>  
+        <!--Fin primer pagina-->  
+        
+        <div id="DivAviso" >
+           <div id="DivHeadAviso" ><a id="LinkAviso">Aviso de privacidad</a></div>   
+            <div id="CuerpoAviso" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+             <div class="panel-body">
+                <button id="BtnAviso" style="margin-bottom: 1em;" class="btn btn-danger pbottom" data-toggle="modal" data-target="#myModal">Leer Aviso</button>
+             </div>      
+            </div>
+        </div>    
+
+        <div id="DivInfoPersonal"> 
+         <div id="DivHeadInfoPersonal" ><a id="LinkInfoPersonal">Información Personal</a></div>
+          <div id="CuerpoInfoPersonal" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body" >
+            
+            <div class="form-group">
+           
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="nombre">Nombre(s)*</label>
+               <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre(s)" ng-model="vm.datos.name"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="apellidos">Apellidos*</label>
+               <input class="form-control" id="apellidos" name="apellidos" type="text" placeholder="Apellidos" ng-model="vm.datos.lastname"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="rfc">RFC*</label>
+                  <input class="form-control" id="rfc" name="rfc" type="text" placeholder="RFC"/>
+                  <label id="ObligatorioRfc" class="control-label" style="color:red;">*campo obligatorio</label>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="nacimiento">Fecha de Nacimiento*</label>
+                  <input class="form-control" id="nacimiento" name="nacimiento" type="date"  placeholder="Nacimiento"/>
+                  <label id="ObligatorioNacimiento" class="control-label" style="color:red;">*campo obligatorio</label>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="nacionalidad">Nacionalidad*</label>
+                  <input class="form-control" id="nacionalidad" name="nacionalidad" type="text" ng-model="user.nacionalidad" placeholder="Nacionalidad"/>
+                  <label id="ObligatorioNacionalidad" class="control-label" style="color:red;">*campo obligatorio</label>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="ine">INE*</label>
+               <input class="form-control" id="ine" name="ine" type="text" placeholder="INE" ng-model="vm.datos.nif"/>
+             </div>  
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="email">Email*</label>
+               <input class="form-control" id="email" name="email" type="text" placeholder="Email" ng-model="vm.datos.email"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+               <label for="cel">Celular*</label>
+               <input class="form-control" id="cel" name="cel" type="text" placeholder="cel" ng-model="vm.datos.cellphone"/>
+             </div>
+
+             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="GuardarInfoPersonal"></label>
+                  <center><button style="margin-bottom:1em; margin-top: 6px;" class="btn btn-danger btn-md" id="GuardarInfoPersonal" >Guardar</button></center>
+             </div>
+            </div>
+           </div>      
+          </div>
+        </div>
+          
+
+
+        <div id="DivInfoFinanciera">
+         <div id="DivHeadInfoFinanciera"><a id="LinkInfoFinanciera">Información Financiera</a></div>     
+          <div id="CuerpoInfoFinanciera" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body">
+            <div class="form-group">
+
+             <div id="Pregunta1">
+              <div id="panel_destinatario"> 
+               <div id="CuadroDatos" class="panel panel-info">
+                <div class="panel-body">
+                 <div class="form-group col-lg-12">
+                    <label  class="control-label" style="text-align: justify;">1.¿Es usted titular de alguna TDC vigente emitida por alguna Institución Bancaria o Comercial?</label><br>
+                 </div> 
+                 <div class="form-group col-lg-4" id="DivSelect1">
+                   <label  class="control-label" >Respuesta</label>
+                   <select id="Select1Preg1Buro" class="form-control">
+                    <option value="Nada"></option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                   </select>
+                 </div>
+                 <div class="form-group col-lg-4" id="DivSelect2Preg1">
+                    <label >Banco</label>
+                    <select id="Select2Preg1Buro" class="form-control" >
+                        <option value="Nada"></option>
+                        <option value="HSBC">Scotiabank</option>
+                        <option value="BBVA BANCOMER">BBVA BANCOMER</option>
+                        <option value="BANAMEX">BANAMEX</option>
+                        <option value="HSBC">HSBC</option>
+                        <option value="BANORTE">BANORTE</option>
+                        <option value="BANCO INBURSA">BANCO INBURSA</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                 </div>
+                  <div class="form-group col-lg-4" id="DivTextPreg1">
+                        <label  class="control-label" >Número de crédito</label>
+                        <input type="text" class="form-control" id="TextPreg1"/>
+                  </div>
+                </div>
+               </div>
+              </div>
+             </div>
+
+             <div id="Pregunta2">
+              <div id="panel_destinatario"> 
+               <div id="CuadroDatos" class="panel panel-info" >
+                <div class="panel-body" >
+                 <div class="form-group col-lg-12">
+                    <label  class="control-label" style="text-align: justify;">2.¿Tiene un crédito Hipotecario vigente con alguna institución financiera?</label><br>
+                 </div> 
+          
+                 <div class="form-group col-lg-4" id="DivSelect1Preg2">
+                    <label  class="control-label" >Respuesta</label>
+                    <select id="Select1Preg2Buro" class="form-control">
+                            <option value="Nada"></option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                    </select>
+                 </div>
+                    <div class="form-group col-lg-4" id="DivSelect2Preg2">
+                        <label >Banco</label>
+                        <select id="Select2Preg2Buro" class="form-control" >
+                            <option value="Nada"></option>
+                            <option value="HSBC">Scotiabank</option>
+                            <option value="BBVA BANCOMER">BBVA BANCOMER</option>
+                            <option value="BANAMEX">BANAMEX</option>
+                            <option value="HSBC">HSBC</option>
+                            <option value="BANORTE">BANORTE</option>
+                            <option value="BANCO INBURSA">BANCO INBURSA</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4" id="DivTextPreg2">
+                         <label  class="control-label" >Número de crédito</label>
+                         <input type="text" class="form-control" id="TextPreg1"/>
+                    </div>
+                  
+                  </div>
+                 </div>
+                </div>
+               </div>
+
+               <div id="Pregunta3">
+                <div id="panel_destinatario"> 
+                 <div id="CuadroDatos" class="panel panel-info">
+                  <div class="panel-body">
+                   <div class="form-group col-lg-12">
+                      <label class="control-label" style="text-align: justify;">3.¿Tiene un crédito Automotriz con antiguedad menor de 2 años?</label><br>
+                   </div> 
+                    <div class="form-group col-lg-4" id="DivSelect1Preg3">
+                        <label  class="control-label" >Respuesta</label>
+                        <select id="Select1Preg3Buro" class="form-control">
+                            <option value="Nada"></option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4" id="DivSelect2Preg3">
+                        <label >Banco</label>
+                        <select class="form-control" >
+                              <option value="Nada"></option>
+                            <option value="HSBC">Scotiabank</option>
+                            <option value="BBVA BANCOMER">BBVA BANCOMER</option>
+                            <option value="BANAMEX">BANAMEX</option>
+                            <option value="HSBC">HSBC</option>
+                            <option value="BANORTE">BANORTE</option>
+                            <option value="BANCO INBURSA">BANCO INBURSA</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4" id="DivTextPreg3">
+                         <label  class="control-label" >Número de crédito</label>
+                         <input type="text" class="form-control" id="TextPreg1"/>
+                    </div>
+                  </div>
+                 </div>
+                </div>
+               </div>
+                
+                 <div class="checkbox">
+                  <p style="text-align: justify;" id="TextCheckBuro"> <input type="checkbox" id="CheckConsulta"/>&nbspHoy siendo&nbsp<output style="color:black;" id="fecha"></output> ¿Autoriza a Grupo financiero Scotiabank México  a consultar sus antecedentes crediticios por única ocasión ante las Sociedades de información Crediticia que estime conveniente, declarado que conoce la naturaleza, alcance y uso que se hará de tal información?</p>
+                 </div>
+                
+                           
+            </div>       
+           </div>
+          </div>
+        </div>   
+        <!--Fin segunda pagina-->
+        
+
+
+        <div class="DivInfoDemografica" style="margin-top:1em; ">
+         <div id="DivHeadInfoDemografica" ><a id="LinkInfoDemografica">Datos Demográficos</a></div>
+          <div id="CuerpoInfoDemografica" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body">
+            <div class="form-group">
+                 
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Sexo">Sexo</label>
+                  <select class="form-control" id="Sexo" name="sexo" >
+                      <option>Masculino</option>
+                      <option>Femenino</option>
+                  </select>
+                </div> 
+                 
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Estado">Estado Civil</label>
+                  <select class="form-control" id="Estado" name="Estado" >
+                        <option>Soltero(a)</option>
+                        <option>Casado(a)</option>
+                        <option>Unión libre</option>
+                        <option>Separada(a)</option>
+                        <option>Divorciado(a)</option>
+                        <option>Viudo(a)</option>
+                        <option>Otro</option>
+                  </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="Dependencia">Dependencia Economica</label>
+                   <input class="form-control" id="Dependencia" type="text" placeholder= "No. Dependencia">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Vivienda">Tipo de Vivienda</label>
+                  <select class="form-control" id="Vivienda" name="Vivienda"  placeholder="Vivienda">
+                        <option>Propia</option>
+                        <option>Arrendada</option>
+                        <option>Otro</option>
+                  </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="AntiguedadDom">Antiguedad de domicilio:</label>
+                   <input class="form-control" id="AntiguedadDom" type="text" placeholder="Años">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="cp">CP</label>
+                  <input class="form-control" id="cp" type="text" placeholder="CP">
+                </div>
+
+                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="colonia">Colonia</label>
+                   <input class="form-control" id="colonia" type="text" placeholder="Colonia">
+                 </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="mundel">Mucipio / Delegación</label>
+                   <input class="form-control" id="mundel" type="text" placeholder="Municipio / Delegación">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                    <label for="mundel">Entidad Federativa</label>
+                    <select class="form-control" id="entidad" name="entidad" >
+                        <option value="0">Todo México</option>
+                        <option value="1">Aguascalientes</option>
+                        <option value="2">Baja California</option>
+                        <option value="3">Baja California Sur</option>
+                        <option value="4">Campeche</option>
+                        <option value="5">Coahuila de Zaragoza</option>
+                        <option value="6">Colima</option>
+                        <option value="7">Chiapas</option>
+                        <option value="8">Chihuahua</option>
+                        <option value="9">CDMX</option>
+                        <option value="10">Durango</option>
+                        <option value="11">Guanajuato</option>
+                        <option value="12">Guerrero</option>
+                        <option value="13">Hidalgo</option>
+                        <option value="14">Jalisco</option>
+                        <option value="15">México</option>
+                        <option value="16">Michoacán </option>
+                        <option value="17">Morelos</option>
+                        <option value="18">Nayarit</option>
+                        <option value="19">Nuevo León</option>
+                        <option value="20">Oaxaca</option>
+                        <option value="21">Puebla</option>
+                        <option value="22">Querétaro</option>
+                        <option value="23">Quintana Roo</option>
+                        <option value="24">San Luis Potosí</option>
+                        <option value="25">Sinaloa</option>
+                        <option value="26">Sonora</option>
+                        <option value="27">Tabasco</option>
+                        <option value="28">Tamaulipas</option>
+                        <option value="29">Tlaxcala</option>
+                        <option value="30">Veracruz </option>
+                        <option value="31">Yucatán</option>
+                        <option value="32">Zacatecas</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="calle">Calle</label>
+                   <input class="form-control" id="calle" type="text" placeholder="Calle">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="numext">Número exterior</label>
+                  <input class="form-control" id="numext" type="text" placeholder="Número Ext.">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                   <label for="numint">Número interior</label>
+                   <input class="form-control" id="numint" type="text" placeholder="Número int.">
+                </div>
+                
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="GuardarInfoDemografica"></label>
+                  <center><button style="margin-bottom:1em; margin-top: 6px;" class="btn btn-danger btn-md" id="GuardarInfoDemografica" >Guardar</button></center>
+                </div>
+
+            </div>
+           </div>
+          </div>
+        </div>
+
+        <div id="DivInfOcupacion"> 
+         <div id="DivHeadInfOcupacion" ><a id="LinkInfOcupacion">Datos Ocupación</a></div>
+          <div id="CuerpoInfOcupacion" class="panel panel-info " style="border-radius: 0px 0px 10px 10px;">
+           <div class="panel-body"> 
+            <div class="form-group">
+
+               <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Ocupacion">Ocupación</label>
+                  <select class="form-control" id="Ocupacion" name="=cupacion" >
+                        <option>ASALARIADO(A)</option>
+                        <option>ESTUDIANTE</option>
+                        <option>AMA DE CASA</option>
+                        <option>OTRO</option>
+                  </select>
+               </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                    <label for="Estudios">Nivel de estudios</label>
+                    <select class="form-control" id="Estudios" name="Estudios" >
+                        <option>Primaria</option>
+                        <option>Secundaria</option>
+                        <option>Bachillerato</option>
+                        <option>Licenciatura</option>
+                        <option>Maestría</option>
+                        <option>Doctorado</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Actividad">Actividad Espeficifica</label>
+                  <input class="form-control" id="Actividad" type="text" placeholder="Actividad">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Ingreso">Ingreso neto mensual</label>
+                  <input class="form-control" id="Ingreso" type="text" placeholder="Ingreso mensual">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="NomEmpresa">Nombre de empresa</label>
+                  <input class="form-control" id="NomEmpresa" type="text" placeholder="Empresa">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="IniAct">Inicio de labores </label>
+                  <input class="form-control" id="IniAct" type="date">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="TimeEmpleo">Antiguedad de empleo </label>
+                  <input class="form-control" id="TimeEmpleo" type="text">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="Puesto">Puesto</label>
+                  <input class="form-control" id="Puesto" type="text" placeholder="Puesto">
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="TipoContrato">Tipo de contrato</label>
+                  <select class="form-control" id="TipoContrato" name="TipoContrato" >
+                        <option>Indefinido</option>
+                        <option>Temporal</option>
+                        <option>En Practicas</option>
+                        <option>Otro</option>
+                       </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="TipoEmpresa">Tipo de Empresa</label>
+                  <select class="form-control" id="TipoEmpresa" name="TipoEmpresa" >
+                        <option>Extractiva</option>
+                        <option>Industrial</option>
+                        <option>Comercial</option>
+                        <option>De Servicios</option>
+                        <option>Financiera</option>
+                        <option>Contrucción</option>
+                        <option>Otro</option>
+                      </select>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                  <label for="GuardarInfOcupacion"></label>
+                  <center><button style="margin-bottom:1em; margin-top: 6px;" class="btn btn-danger btn-md" id="GuardarInfOcupacion" >Guardar</button></center>
+                </div>
+            </div>
+           </div>      
+          </div>
+        </div>
+
+    
+        
+        <!--<button id="BtnFinalizar" data-toggle="modal" data-target="#myModalFinalizar" class="btn btn-success" ng-click="">Continuar</button> -->
+      
+        
+        <center>
+        <button  id="BtnFirmarSucursal" style="margin:1em;" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#ModalSucursal">Sucursal </button>
+
+        <button id="BtnCrearOperacion" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#modalEnLinea">En linea</button>
+        </center>
+
+
+        <!--<button ng-click="vm.Prueba()" type="submit" class="btn btn-primary" >Comenzar identificación</button>-->
+
+        <!--MODALES-->
+
+         <!-- Modal empezar video-->
+          <div class="modal fade" id="modalEnLinea" role="dialog">
+           <div class="modal-dialog modal-md">
+            <div class="modal-content">
+             <div class="modal-header">
+             <center><img  src="Images/logo.png">
+              <h4 class="modal-title"><b>Verifica que los datos sean correctos</b></h4>
+             </center>
+             </div>
+             <div class="modal-body">
+              <formly-form model="vm.datos" fields="vm.datosFields" form="vm.datosForm" ng-show="!ready">
+               <!--<button type="submit" class="btn btn-primary" ng-disabled="vm.datosForm.$invalid" ng-show="!ready" >Comenzar identificación</button>-->       
+              </formly-form>
+              
+             </div>
+             <div class="modal-footer">
+              <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+              <center>
+                <button type="submit" class="btn btn-danger" ng-click="vm.onSubmit()" ng-disabled="vm.datosForm.$invalid" data-dismiss="modal" ng-show="!ready" >Comenzar identificación</button>
+                <!--<button ng-click="vm.Prueba()" type="submit" class="btn btn-primary" >Comenzar identificación</button>-->
+              </center>
+             </div>
+            </div>  
+           </div>
+          </div>
+
+
+
+
+         <!--Modal Cargando-->
+         <div class="container">
+          <div class="modal fade" id="Searching_Modal"  role="dialog" tabindex="-1" aria-labelledby="mySmallModalLabel">
+           <div class="modal-dialog modal-sm" >
+            <div class="col-xs-2"></div>
+             <div  class="modal-content col-xs-8" style="background-color: rgba(255, 255, 255,0.8); border-radius:33px;">
+              <div class="modal-body">
+               <center><img style="width:100%;" src="Images/cargando.gif"></center>                               
+              </div>
+             </div>
+           </div>
+          </div>
+         </div>
+
+        <!--Modal Pop-up cotizacion por correo electronico-->     
+                <div class="modal fade" id="myModalCotizacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                   <div class="modal-header">
+                    <center><img  src="Images/logo.png">
+                    <h4 class="modal-title"><b>Enviar cotización por Email</b></h4></center>
+                   </div>
+                   <div class="modal-body">
+                    <form class="form-horizontal">
+
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" style="float: left;" for="CotizacionNombre">*Nombre(s)</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="vm.datos.name" class="form-control" id="CotizacionNombre" placeholder="Nombre"/>
+                          </div>
+                      </div>
+                      
+                         <div class="form-group">
+                          <label class="control-label col-sm-2" style="float: left;" for="CotizacionLastname">*Lastname</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="vm.datos.lastname" class="form-control" id="CotizacionLastname" placeholder="Apellidos"/>
+                          </div>
+                      </div>
+                         
+                      <div class="form-group">
+                          <label class="control-label col-sm-2" style="float: left;" for="CotizacionCel">*Celular</label>
+                          <div class="col-sm-10">
+                            <input type="text" ng-model="vm.datos.cellphone" class="form-control" id="CotizacionCel" placeholder="Celular"/>
+                          </div>
+                      </div>
+
+
+                      <div class="form-group">
+                         <label class="control-label col-sm-2" style="float: left;" for="CotizacionEmail">*Email</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-model="vm.datos.email" id="CotizacionEmail" placeholder="Email"/>
+                          </div>
+                        </div>
+                        &nbsp
+                    </form>
+                   </div>
+                   <div class="modal-footer">
+                     <center>
+                     <button type="button" class="btn btn-danger" data-dismiss="modal" id="BtnCotizacionAceptar">Enviar</button>
+                     </center>
+                   </div>
+                  </div>
+                 </div>
+                </div>      
+        <!--Modal Leer Aviso-->
+        <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog modal-md ">
+                     <div class="modal-content">
+                     <div id="HeaderModal" class="modal-header">
+                               <center><img src="Images/logo.png"/>
+                               <h4 class="modal-title">Aviso de privacidad Scotiabank</h4></center>
+                     </div>
+                      <div class="modal-body">
+                         <p id="ParrafoAviso">Grupo Financiero Scotiabank México hace de su conocimiento que sus datos personales serán protegidos de acuerdo a lo establecido por la ley Federal de Protección de datos Personales en Posesión de los particulares. Usted podrá consultar nuestro aviso de privacidad completo en la página <a href="www.Scotiabank.com.mx">www.scotiabank.com.mx</a></p>
+                      </div>
+                      <div class="modal-footer">
+                        <button id="BtnAceptarAviso" type="button" class="btn btn-danger" data-dismiss="modal">Marcar como leído</button>
+                      </div>
+                     </div>
+                  </div>
+        </div><!--Termina el modal-->
+
+        <!--Modal Pop-up de Buro-->
+                <div class="modal fade" id="myModalBuro" >
+                     <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                       <div id="HeaderModal" class="modal-header">
+                        <center><img src="Images/logo.png"/></center>
+                        <!--<h4 class="modal-title">¡Enhorabuena!<br> tu crédito ha sido pre-aprobado</h4>-->
+                        <center><h1>¡Felicidades!</h1></center>
+                        <h4>Tu tarjeta de crédito &nbsp<b><output id="tarjetaFinal" style="color:black;display: inline; font-size: 16px;"></output></b> con una anualidad de <b><output id="anualidad" style="color:black;display: inline; font-size: 16px;"></output></b> ha sido preaprobada</h4>
+                       </div>
+
+                       <div class="modal-body">
+                        <center><img id="ImgCheck"  style="width: 25%;" src="Images/check2.gif"></center>
+                       </div>
+                      <div class="modal-footer">
+                        <button style="float: left;" type="button" class="btn btn-danger" data-dismiss="modal" id="BtnNuevaSimulacion">Nueva simulación</button>
+                        <button style="float: right;" type="button" class="btn btn-danger" data-dismiss="modal" id="BtnAceptarBuro">Aceptar</button>
+
+                      </div>
+                      </div>
+                     </div>
+                </div>
+
+        <!--Modal Pop-up Finalizar-->
+                <div class="modal fade" id="myModalFinalizar" role="dialog">
+                     <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                       <div id="HeaderModal" class="modal-header">
+                        <center><img src="Images/logo.png"></center>
+                        <!--<h4 class="modal-title">Las condiciones crediticias pueden diferir de las solicitadas</h4>-->
+                       </div>
+                       <div class="modal-body">
+                        <center><img id="ImgCheck" style="width: 35%;" src="Images/cotizacion.gif">
+                        <label class="">¡Enhorabuena! tu crédito ha sido preaprobado. A continuación recibirás un email con las condiciones. Puedes concluir con el proceso bajo las siguientes modalidades: </label></center>
+                       </div>
+                      <div class="modal-footer">
+
+                        <center>
+                        <button  id="BtnFirmarSucursal" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#ModalSucursal">Sucursal </button>
+
+                        <button id="BtnCrearOperacion" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#myModalOperacion" >En linea</button></center>
+                      </div><!--Termina el modal-->
+                      </div>
+                     </div>
+                </div>
+
+         <!--Modal Pop-up Buscar sucursal-->
+                <div class="modal fade" id="ModalSucursal" >
+                  <div class="modal-dialog modal-lg ">
+                     <div class="modal-content">
+                     <div id="HeaderModal" class="modal-header">
+                               <center><img src="Images/logo.png"/></center>
+                               <!--<h4 class="modal-title">Firmar en Sucursal</h4>-->
+                     </div>
+                      <div class="modal-body" style="margin-top:-20px; ">
+                      <h4>Presentar la siguiente documentación:</h4>      
+                          <ol>
+                              <li>Solicitud de Tarjeta de Crédito</li>
+                              <li>Condiciones crediticias </li>
+                              <li>Comprobantes de ingresos</li>
+                              <li>Comprobante de domicilio</li>
+                              <li>Identificación oficial </li>
+                          </ol>        
+                       <!-- <div id="map-canvas"></div>-->
+                       
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15050.735319303047!2d-99.16222135574124!3d19.426062110827065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sScotiabank!5e0!3m2!1ses-419!2smx!4v1485380166279"  width="100%" height="250em"  frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button id="BtnAceptarMapa" type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+                      </div>
+                     </div>
+                  </div>
+                </div>
+
+ 
+
+      </form>  
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+</body>
+
+    <!-- Application Dependencies -->
+
+    <!-- Application Scripts -->
+    <script src="app.js"></script>
+    <script src="scripts/MainController.js" charset="utf-8"></script>
+    <script src="scripts/province.js" charset="utf-8"></script>
+</html>

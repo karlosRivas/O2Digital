@@ -1,0 +1,65 @@
+<div class="panel-heading-info" role="tab" id="heading-personal" ng-class="{'panel-completed' : financiera }">
+  <h4 class="panel-title">
+    <a id="link-personal" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-personal" aria-expanded="false" aria-controls="collapse-personal">
+      Información Personal
+    </a>
+  </h4>
+</div>
+<div id="collapse-personal" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-personal">
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="nombre">Nombre(s)*</label> <input
+        class="form-control" id="nombre" name="nombre" type="text"
+        placeholder="Nombre(s)" ng-model="vm.datos.name" />
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="apellidos">Apellidos*</label> <input
+        class="form-control" id="apellidos" name="apellidos"
+        type="text" placeholder="Apellidos"
+        ng-model="vm.datos.lastname" />
+      </div>
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="rfc">RFC*</label> <input class="form-control"
+        id="rfc" name="rfc" type="text" placeholder="RFC" />
+      </div>
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="nacimiento">Fecha de Nacimiento*</label> <input
+        class="form-control" id="nacimiento" name="nacimiento"
+        type="date" placeholder="Nacimiento" />
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="nacionalidad">Nacionalidad*</label> <input
+        class="form-control" id="nacionalidad" name="nacionalidad"
+        type="text" ng-model="user.nacionalidad"
+        placeholder="Nacionalidad" />
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="ine">INE*</label> <input class="form-control"
+        id="ine" name="ine" type="text" placeholder="INE"
+        ng-model="vm.datos.nif" />
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="email">Email*</label> <input
+        class="form-control" id="email" name="email" type="text"
+        placeholder="Email" ng-model="vm.datos.email" />
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-3">
+        <label for="cel">Celular*</label> <input
+        class="form-control" id="cel" name="cel" type="text"
+        placeholder="cel" ng-model="vm.datos.cellphone" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <button class="btn btn-primary btn-md" id="GuardarInfoPersonal" ng-click="showFinanciera()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
